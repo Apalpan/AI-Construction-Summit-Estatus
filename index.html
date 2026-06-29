@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Informe ejecutivo y dashboard operativo del AI Construction Summit 2026 por areas, responsables, riesgos y siguientes acciones."
+    />
+    <title>AI Construction Summit 2026 | Estatus Integral</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/aecode-logo-principal-fondo-blanco.png" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar" aria-label="Navegacion principal">
+        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+          <span class="brand-mark">
+            <img src="./assets/aecode-logo-principal-fondo-oscuro.png" alt="AECODE" />
+          </span>
+          <span class="brand-copy">
+            <strong>AI Construction Summit</strong>
+            <small>Estado integral 2026</small>
+          </span>
+        </a>
+        <nav class="nav-pills" aria-label="Secciones">
+          <a href="#dashboard">Dashboard</a>
+          <a href="#areas">Areas</a>
+          <a href="#stands">Stands</a>
+          <a href="#gonogo">Go / No-Go</a>
+          <a href="#riesgos">Riesgos</a>
+        </nav>
+        <button class="print-button" type="button" data-action="print">Exportar PDF</button>
+      </header>
+
+      <main>
+        <section class="hero deck-slide" id="inicio">
+          <div class="hero-content">
+            <div class="eyebrow">Corte operativo consolidado - 29 junio 2026</div>
+            <h1>Informe completo por areas para cierre del AI Construction Summit 2026</h1>
+            <p>
+              Vista ejecutiva, tablero de control, checklist por etapa, mapa de stands,
+              campos abiertos y proximas decisiones criticas para operar el cierre del evento.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#dashboard">Ver tablero</a>
+              <a class="secondary-link" href="#areas">Revisar areas</a>
+            </div>
+          </div>
+          <aside class="hero-panel" aria-label="Resumen ejecutivo">
+            <div class="panel-kicker">Estado ejecutivo</div>
+            <div class="status-chip status-critical">Sprint critico</div>
+            <dl class="hero-metrics">
+              <div>
+                <dt>16</dt>
+                <dd>frentes operativos</dd>
+              </div>
+              <div>
+                <dt>10</dt>
+                <dd>hitos Go / No-Go</dd>
+              </div>
+              <div>
+                <dt>31</dt>
+                <dd>stands numerados</dd>
+              </div>
+              <div>
+                <dt>21</dt>
+                <dd>campos abiertos</dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
+
+        <section class="executive-strip" aria-label="Lectura ejecutiva">
+          <article>
+            <span>Prioridad 1</span>
+            <strong>Cerrar caja, pagos CIP, sponsors y presupuesto maestro.</strong>
+          </article>
+          <article>
+            <span>Prioridad 2</span>
+            <strong>Confirmar agenda, speakers, moderadores y PPT maestra.</strong>
+          </article>
+          <article>
+            <span>Prioridad 3</span>
+            <strong>Probar web, app, GHL, QR, registro, pagos y fallback manual.</strong>
+          </article>
+        </section>
+
+        <section class="section deck-slide" id="dashboard">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Dashboard operativo</div>
+              <h2>Que esta pasando y que se debe decidir</h2>
+            </div>
+            <p>
+              Tablero diseñado para direccion: muestra frentes, urgencias, responsables,
+              riesgos y evidencia disponible sin perderse en mensajes sueltos.
+            </p>
+          </div>
+
+          <div class="kpi-grid" id="kpiGrid"></div>
+
+          <div class="dashboard-grid">
+            <article class="decision-card">
+              <div class="card-heading">
+                <span class="mini-label">P0</span>
+                <h3>Decisiones inmediatas</h3>
+              </div>
+              <ul class="priority-list" id="priorityList"></ul>
+            </article>
+
+            <article class="decision-card">
+              <div class="card-heading">
+                <span class="mini-label">Responsables</span>
+                <h3>Carga por owner</h3>
+              </div>
+              <div class="owner-bars" id="ownerBars"></div>
+            </article>
+
+            <article class="decision-card wide">
+              <div class="card-heading">
+                <span class="mini-label">Cobertura</span>
+                <h3>Madurez por area</h3>
+              </div>
+              <div class="area-bars" id="areaBars"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section deck-slide" id="presentacion">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Modo presentacion</div>
+              <h2>Narrativa ejecutiva del estatus</h2>
+            </div>
+            <p>
+              Esta version esta preparada para mostrarse en reunion: primero el estado,
+              luego los bloqueos, despues los owners y finalmente las decisiones.
+            </p>
+          </div>
+          <div class="presentation-grid">
+            <article>
+              <span>1</span>
+              <h3>Modelo de control</h3>
+              <p>Una matriz unica: area, responsable, actividad, fecha, estado, evidencia, bloqueo y decision.</p>
+            </article>
+            <article>
+              <span>2</span>
+              <h3>Operacion antes / durante / despues</h3>
+              <p>Cada area tiene acciones previas, ejecucion en evento y cierre post-evento con evidencia.</p>
+            </article>
+            <article>
+              <span>3</span>
+              <h3>Criterio de calidad</h3>
+              <p>El Summit debe sentirse premium, tecnologico, comercialmente util y operativamente controlado.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section deck-slide" id="areas">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Checklist maestro</div>
+              <h2>Areas, responsables y acciones</h2>
+            </div>
+            <p>
+              Filtra por etapa para revisar que debe pasar antes, durante y despues del evento.
+              Los vacios se mantienen como "No se tiene claro" para no inventar avance.
+            </p>
+          </div>
+
+          <div class="toolbar" aria-label="Filtros de areas">
+            <label class="search-box">
+              <span>Buscar</span>
+              <input id="areaSearch" type="search" placeholder="Area, responsable, riesgo..." />
+            </label>
+            <div class="filter-buttons" role="group" aria-label="Filtro por etapa">
+              <button class="filter-button is-active" type="button" data-filter="all">Todo</button>
+              <button class="filter-button" type="button" data-filter="before">Antes</button>
+              <button class="filter-button" type="button" data-filter="during">Durante</button>
+              <button class="filter-button" type="button" data-filter="after">Despues</button>
+              <button class="filter-button" type="button" data-filter="risks">Riesgos</button>
+            </div>
+          </div>
+
+          <div class="areas-grid" id="areasGrid"></div>
+        </section>
+
+        <section class="section deck-slide" id="stands">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Feria empresarial</div>
+              <h2>Mapa de stands y ocupacion</h2>
+            </div>
+            <p>
+              Lectura operativa de Diamante, Gold y Silver con pendientes de ubicacion,
+              pagos, beneficios, energia, montaje y experiencia sponsor.
+            </p>
+          </div>
+
+          <div class="stands-layout">
+            <article class="stand-summary" id="standSummary"></article>
+            <figure class="map-frame">
+              <img
+                src="./assets/mapa-evento-stands-ai-construction-summit-2026.png"
+                alt="Mapa del evento AI Construction Summit 2026 con zonas Diamante, Gold y Silver"
+                width="1400"
+                height="917"
+                loading="lazy"
+              />
+              <figcaption>Fuente: mapa operativo cargado al vault del Summit.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="section deck-slide" id="gonogo">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Criterios de aprobacion</div>
+              <h2>Hitos Go / No-Go</h2>
+            </div>
+            <p>
+              Estos hitos ordenan el cierre: si un frente no pasa el control, sube a decision
+              de direccion antes de seguir comprometiendo experiencia, caja o reputacion.
+            </p>
+          </div>
+          <div class="timeline" id="goNoGoTimeline"></div>
+        </section>
+
+        <section class="section deck-slide" id="riesgos">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Riesgos y campos abiertos</div>
+              <h2>Lo que puede romper la ejecucion</h2>
+            </div>
+            <p>
+              Lista viva de puntos que deben resolverse con owner, evidencia y fecha.
+              Se mantiene la incertidumbre explicita para forzar cierre operativo.
+            </p>
+          </div>
+          <div class="risk-grid">
+            <article class="risk-panel">
+              <h3>Riesgos P0</h3>
+              <ul id="riskList"></ul>
+            </article>
+            <article class="risk-panel">
+              <h3>Campos abiertos</h3>
+              <ul id="openFields"></ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section sources deck-slide" id="fuentes">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Trazabilidad</div>
+              <h2>Fuentes del informe</h2>
+            </div>
+            <p>
+              Este sitio resume informacion del vault y debe actualizarse cuando cambien
+              el CRM de sponsors, el mapa, el plan maestro o los sheets operativos.
+            </p>
+          </div>
+          <div class="source-list">
+            <span>Plan maestro Summit</span>
+            <span>Checklist cierre operativo</span>
+            <span>Organizacion por areas</span>
+            <span>Mapa de stands</span>
+            <span>CRM sponsors</span>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
