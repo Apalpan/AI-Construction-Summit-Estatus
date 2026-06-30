@@ -1196,13 +1196,19 @@ function renderGenPlusCommandCenter() {
     .join("");
 
   qs("#capacityPanel").innerHTML = genPlusData.capacity
-    .map(
-      (team) => `
+    .map((team) => {
+      const ringColor =
+        team.load > 85
+          ? "var(--aec-danger)"
+          : team.load >= 70
+          ? "var(--aec-warning-bright)"
+          : "var(--aec-success-bright)";
+      return `
       <div class="capacity-row">
-        <div class="capacity-ring" style="--load:${team.load}%"><strong>${team.load}%</strong></div>
+        <div class="capacity-ring" style="--load:${team.load}%; --ring-color:${ringColor}"><strong>${team.load}%</strong></div>
         <span>${team.team}</span>
-      </div>`
-    )
+      </div>`;
+    })
     .join("");
 
   qs("#decisionList").innerHTML = genPlusData.decisions

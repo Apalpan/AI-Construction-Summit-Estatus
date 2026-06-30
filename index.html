@@ -167,19 +167,9 @@
             </div>
           </div>
 
-          <div class="gen-command-grid">
-            <aside class="gen-sidebar" aria-label="Contexto de producto">
-              <div class="gen-side-brand">
-                <strong>GEN+ OS</strong>
-                <span>AI-native PMO / BIM / VDC</span>
-              </div>
-              <div class="gen-project-stack" id="genProjectStack"></div>
-              <div class="jtbd-card">
-                <h3>Jobs to be done</h3>
-                <div id="jtbdList"></div>
-              </div>
-            </aside>
+          <div class="gen-kpi-row" id="genKpiRow"></div>
 
+          <div class="gen-command-grid">
             <div class="gen-main-panel">
               <div class="gen-main-header">
                 <div>
@@ -192,28 +182,46 @@
                 </button>
               </div>
 
-              <div class="gen-kpi-row" id="genKpiRow"></div>
-
               <div class="gen-ops-grid">
                 <article class="gen-card gen-scurve-card">
                   <div class="gen-card-head">
                     <span>S-Curve</span>
                     <strong>Avance fisico 67% / valorizado 71%</strong>
                   </div>
-                  <svg viewBox="0 0 520 220" role="img" aria-label="Curva S de avance planificado, fisico y valorizado">
-                    <path class="grid-line" d="M20 180H500M20 130H500M20 80H500M20 30H500" />
-                    <path class="curve plan" d="M24 184 C120 176, 160 138, 210 110 C270 76, 360 42, 498 30" />
-                    <path class="curve physical" d="M24 184 C110 172, 165 150, 225 128 C290 104, 360 86, 498 70" />
-                    <path class="curve cost" d="M24 184 C118 166, 170 134, 238 105 C305 78, 392 58, 498 45" />
+                  <svg class="scurve-chart" viewBox="0 0 560 250" role="img" aria-label="Curva S: avance planificado 92%, fisico 67% y valorizado 71%">
+                    <defs>
+                      <linearGradient id="areaPhysical" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.30" />
+                        <stop offset="100%" stop-color="#22D3EE" stop-opacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <g class="scurve-grid">
+                      <line x1="48" y1="40" x2="540" y2="40" /><line x1="48" y1="82" x2="540" y2="82" />
+                      <line x1="48" y1="124" x2="540" y2="124" /><line x1="48" y1="166" x2="540" y2="166" />
+                      <line x1="48" y1="208" x2="540" y2="208" />
+                    </g>
+                    <g class="scurve-axis">
+                      <text x="40" y="44" text-anchor="end">100</text><text x="40" y="128" text-anchor="end">50</text>
+                      <text x="40" y="212" text-anchor="end">0</text>
+                      <text x="48" y="230">May</text><text x="170" y="230">Jun</text><text x="295" y="230">Jul</text>
+                      <text x="415" y="230">Ago</text><text x="540" y="230" text-anchor="end">Sep</text>
+                    </g>
+                    <path class="scurve-area area-physical" d="M48 207 C150 201 235 156 325 126 C405 102 472 96 540 92 L540 208 L48 208 Z" />
+                    <path class="curve plan" d="M48 205 C150 197 230 126 320 96 C400 70 470 56 540 50" />
+                    <path class="curve cost" d="M48 206 C150 198 240 146 330 116 C408 92 472 88 540 85" />
+                    <path class="curve physical" d="M48 207 C150 201 235 156 325 126 C405 102 472 96 540 92" />
+                    <circle class="curve-dot plan" cx="540" cy="50" r="4.5" />
+                    <circle class="curve-dot cost" cx="540" cy="85" r="4.5" />
+                    <circle class="curve-dot physical" cx="540" cy="92" r="4.5" />
                   </svg>
                   <div class="curve-legend">
-                    <span><i class="plan-dot"></i>Plan</span>
-                    <span><i class="physical-dot"></i>Fisico</span>
-                    <span><i class="cost-dot"></i>Valorizado</span>
+                    <span><i class="plan-dot"></i>Plan 92%</span>
+                    <span><i class="cost-dot"></i>Valorizado 71%</span>
+                    <span><i class="physical-dot"></i>Fisico 67%</span>
                   </div>
                 </article>
 
-                <article class="gen-card">
+                <article class="gen-card gen-heat-card">
                   <div class="gen-card-head">
                     <span>Heatmap riesgos</span>
                     <strong>3 clashes criticos / 7 RFIs abiertos</strong>
@@ -229,7 +237,7 @@
                   <div class="agent-stack" id="agentStack"></div>
                 </article>
 
-                <article class="gen-card">
+                <article class="gen-card gen-capacity-card">
                   <div class="gen-card-head">
                     <span>Carga equipo</span>
                     <strong>Capacity planning</strong>
@@ -241,17 +249,28 @@
 
             <aside class="gen-ai-panel" aria-label="Resumen IA">
               <span class="gen-eyebrow">Resumen IA</span>
-              <h3>Proxima accion recomendada: Aprobar plano P-EL-092</h3>
+              <h3>Proxima accion: Aprobar plano P-EL-092</h3>
               <p>
-                El retraso de permisos afecta el SPI 0.87 y bloquea la liberacion MEP en Hospital Vitarte.
-                La aprobacion reduce riesgo de reproceso esta semana.
+                El retraso de permisos afecta el SPI 0.87 y bloquea la liberacion MEP en
+                Hospital Vitarte. La aprobacion reduce el riesgo de reproceso esta semana.
               </p>
               <div class="decision-list" id="decisionList"></div>
-              <div class="component-registry">
-                <h4>12 componentes base</h4>
-                <div id="componentList"></div>
-              </div>
             </aside>
+          </div>
+
+          <div class="gen-context-grid">
+            <section class="gen-context-card">
+              <span class="gen-eyebrow">Proyectos en control</span>
+              <div class="gen-project-stack" id="genProjectStack"></div>
+            </section>
+            <section class="gen-context-card jtbd-card">
+              <h3>Jobs to be done</h3>
+              <div id="jtbdList"></div>
+            </section>
+            <section class="gen-context-card component-registry">
+              <h4>12 componentes base</h4>
+              <div id="componentList"></div>
+            </section>
           </div>
         </section>
 
