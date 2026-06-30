@@ -1074,6 +1074,52 @@ const summitData = {
   ]
 };
 
+// GEN+ v2.0 — contenido OFICIAL fusionado desde https://www.aecode.ai/summit
+// Datos publicos del evento (no confidenciales). Fuente unica para la capa de marca.
+const summitOfficial = {
+  edition: "2da Edicion Internacional",
+  tagline: "Donde la inteligencia artificial se encuentra con la innovacion en construccion",
+  dateLabel: "17 y 18 de julio, 2026",
+  venueShort: "Auditorio Ing. Antonio Blanco Blasco - CIP, San Isidro, Lima",
+  registerUrl: "https://www.aecode.ai/summit2026/asistir",
+  metrics: [
+    { value: "+1000", label: "Asistentes presenciales", detail: "Meta congreso 2026" },
+    { value: "+500", label: "Alcance virtual", detail: "Transmision dual" },
+    { value: "9", label: "Paises (1a edicion)", detail: "550 personas en 2025" },
+    { value: "7", label: "Ejes tematicos", detail: "2 dias de congreso" }
+  ],
+  ejes: [
+    { n: "01", title: "Adopcion e implementacion de IA en AEC", desc: "Estrategia, cultura, casos reales y gestion del cambio." },
+    { n: "02", title: "Gestion inteligente de datos", desc: "Analitica, ciencia de datos, dashboards y decisiones." },
+    { n: "03", title: "IA para proyectos: BIM, LEAN, VDC & BI", desc: "Productividad, costos, riesgos y control." },
+    { n: "04", title: "IA generativa, asistentes y agentes", desc: "Workflows, automatizacion y copilotos 24/7." },
+    { n: "05", title: "Lean Construction 4.0 & emergentes", desc: "Robotica, drones, LiDAR, VR/AR, 3D y Scan to BIM." },
+    { n: "06", title: "Obra inteligente & Computer Vision", desc: "Monitoreo, avance fisico y control en tiempo real." },
+    { n: "07", title: "Infraestructura inteligente", desc: "Gemelos digitales, IoT, Smart Buildings & Cities." }
+  ],
+  stages: [
+    { tag: "Etapa 01", title: "Masterclass en IA", date: "10, 17 y 24 de junio", desc: "Fundamentos de IA para AEC, herramientas de productividad y agentes de automatizacion." },
+    { tag: "Etapa 02", title: "Pre-congreso", date: "8 y 9 de julio", desc: "Activacion y preparacion: +450 participantes, aliados y comunidad rumbo al encuentro." },
+    { tag: "Etapa 03", title: "Congreso", date: "17 y 18 de julio", desc: "AI Construction Summit: +1000 asistentes presenciales y +500 de alcance virtual." }
+  ],
+  tickets: [
+    { name: "Inscripcion Libre", price: "Gratis", note: "Acceso ambos dias", perks: ["Carnet oficial", "Conferencias en vivo", "Networking AEC"], cta: "Registrarme", url: "https://www.aecode.ai/summit2026/asistir", featured: false },
+    { name: "VIP Formativa Virtual", price: "S/ 90", was: "S/ 110", note: "100% online", perks: ["Todo lo de Libre", "Curso IA + herramientas", "Certificado oficial", "App interactiva"], cta: "Quiero VIP Virtual", url: "https://www.aecode.ai/summit2026/vip?modality=virtual", featured: false },
+    { name: "VIP Formativa Presencial", price: "S/ 140", was: "S/ 190", note: "Pago unico", perks: ["Todo lo de VIP Virtual", "Merchandising oficial", "Comunidad AECODE"], cta: "Quiero VIP Presencial", url: "https://www.aecode.ai/summit2026/vip?modality=presencial", featured: true },
+    { name: "Delegacion Corporativa", price: "3+ pax", note: "Experiencia a medida", perks: ["VIP Presencial para todos", "Gestion centralizada", "Certificado oficial"], cta: "Cotizar delegacion", url: "https://www.aecode.ai/summit2026/corporativo", featured: false }
+  ],
+  venue: {
+    name: "Auditorio Ing. Antonio Blanco Blasco",
+    org: "Colegio de Ingenieros del Peru - CD Lima",
+    address: "C. Barcelona 240, San Isidro 15076, Lima, Peru",
+    notes: [
+      "San Isidro, principal distrito empresarial de Lima.",
+      "Feria empresarial B2B y zonas de networking.",
+      "Facil acceso, estacionamiento y conexion a vias principales."
+    ]
+  }
+};
+
 const state = {
   filter: "all",
   search: ""
@@ -1416,6 +1462,10 @@ const ICON_CHECK =
 // GEN+ v2.0 — navigation commands feed the same ⌘K palette as the IA actions.
 // This also restores navigation on mobile, where the nav-pills are hidden.
 const sectionCommands = [
+  { type: "nav", label: "Ejes tematicos", hint: "7 ejes del congreso", target: "#ejes", kind: "Ir" },
+  { type: "nav", label: "Ruta de transformacion", hint: "Masterclass, pre-congreso, congreso", target: "#ruta", kind: "Ir" },
+  { type: "nav", label: "Entradas e inversion", hint: "Libre, VIP virtual, presencial, corporativo", target: "#entradas", kind: "Ir" },
+  { type: "nav", label: "Sede oficial", hint: "CIP, San Isidro, Lima", target: "#sede", kind: "Ir" },
   { type: "nav", label: "GEN+ AI Command Center", hint: "Decisiones, S-Curve, agentes IA", target: "#command-center", kind: "Ir" },
   { type: "nav", label: "Informe del evento", hint: "Informacion general y temas", target: "#info-evento", kind: "Ir" },
   { type: "nav", label: "Areas estrategicas", hint: "Bloques clave del proyecto", target: "#estrategicas", kind: "Ir" },
@@ -1632,6 +1682,90 @@ function renderCountdownAndDate() {
   });
 }
 
+// GEN+ v2.0 — render the fused OFFICIAL summit layer
+function renderSummitOfficial() {
+  const metrics = qs("#summitMetrics");
+  if (metrics) {
+    metrics.innerHTML = summitOfficial.metrics
+      .map(
+        (m) => `
+        <article class="summit-metric">
+          <strong>${m.value}</strong>
+          <span>${m.label}</span>
+          <small>${m.detail}</small>
+        </article>`
+      )
+      .join("");
+  }
+
+  const ejes = qs("#ejesGrid");
+  if (ejes) {
+    ejes.innerHTML = summitOfficial.ejes
+      .map(
+        (eje) => `
+        <article class="eje-card">
+          <span class="eje-num">${eje.n}</span>
+          <h3>${eje.title}</h3>
+          <p>${eje.desc}</p>
+        </article>`
+      )
+      .join("");
+  }
+
+  const stages = qs("#stagesGrid");
+  if (stages) {
+    stages.innerHTML = summitOfficial.stages
+      .map(
+        (stage, index) => `
+        <article class="stage-card${index === 2 ? " is-now" : ""}">
+          <div class="stage-top">
+            <span class="stage-tag">${stage.tag}</span>
+            <span class="stage-date">${stage.date}</span>
+          </div>
+          <h3>${stage.title}</h3>
+          <p>${stage.desc}</p>
+        </article>`
+      )
+      .join("");
+  }
+
+  const tickets = qs("#ticketsGrid");
+  if (tickets) {
+    tickets.innerHTML = summitOfficial.tickets
+      .map(
+        (ticket) => `
+        <article class="ticket-card${ticket.featured ? " is-featured" : ""}">
+          ${ticket.featured ? '<span class="ticket-badge">Recomendado</span>' : ""}
+          <div class="ticket-head">
+            <h3>${ticket.name}</h3>
+            <div class="ticket-price">
+              ${ticket.was ? `<s>${ticket.was}</s>` : ""}
+              <strong>${ticket.price}</strong>
+            </div>
+            <span class="ticket-note">${ticket.note}</span>
+          </div>
+          <ul>${ticket.perks.map((perk) => `<li>${perk}</li>`).join("")}</ul>
+          <a class="ticket-cta" href="${ticket.url}" target="_blank" rel="noopener">${ticket.cta}</a>
+        </article>`
+      )
+      .join("");
+  }
+
+  const venue = qs("#venuePanel");
+  if (venue) {
+    const v = summitOfficial.venue;
+    venue.innerHTML = `
+      <div class="venue-card">
+        <span class="gen-eyebrow">Sede oficial</span>
+        <h3>${v.name}</h3>
+        <p class="venue-org">${v.org}</p>
+        <p class="venue-address">${v.address}</p>
+        <ul>${v.notes.map((note) => `<li>${note}</li>`).join("")}</ul>
+        <a class="venue-cta" href="https://maps.google.com/?q=${encodeURIComponent(v.address)}" target="_blank" rel="noopener">Ver en mapa</a>
+      </div>`;
+  }
+}
+
 function bindInteractions() {
   qsa(".filter-button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -1804,6 +1938,7 @@ function bindInteractions() {
 
 function init() {
   renderCountdownAndDate();
+  renderSummitOfficial();
   renderGenPlusCommandCenter();
   renderKpis();
   renderEventInfo();

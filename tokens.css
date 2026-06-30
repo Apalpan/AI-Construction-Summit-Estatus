@@ -19,6 +19,17 @@
   --primary-tint-2: rgb(33 101 255 / 0.16);
   --primary-glow: rgb(33 101 255 / 0.28);
 
+  /* ---- Brand · Summit gradient (fused from aecode.ai/summit) ----------- */
+  --brand-violet: #7C3AED;
+  --brand-violet-bright: #8B5CF6;
+  --brand-cyan: #22D3EE;
+  --brand-gradient: linear-gradient(100deg, #2165FF 0%, #6457FF 46%, #A855F7 100%);
+  --brand-gradient-bright: linear-gradient(100deg, #3B82F6 0%, #818CF8 45%, #C084FC 100%);
+  /* AA-safe ramp for small WHITE text on gradient (ends at #7C3AED, >=4.8:1) */
+  --brand-gradient-badge: linear-gradient(100deg, #2165FF 0%, #6457FF 46%, #7C3AED 100%);
+  --brand-gradient-soft: linear-gradient(100deg, rgb(33 101 255 / 0.16) 0%, rgb(168 85 247 / 0.16) 100%);
+  --brand-glow: 0 0 48px -10px rgb(124 92 237 / 0.55);
+
   /* ---- Semantic · AEC vocabulary --------------------------------------- */
   --aec-progress: #0891B2;          /* avance físico — cyan (text-safe)     */
   --aec-progress-bright: #22D3EE;   /* avance físico — cyan accent / fills  */
@@ -189,4 +200,6 @@
   --shadow-card:
     0 1px 0 0 rgb(255 255 255 / 0.06) inset,
     0 18px 40px -22px rgb(0 0 0 / 0.8);
+  /* brighter focus halo on dark brand surfaces (navy knockout + cyan halo) */
+  --ring: 0 0 0 2px #06142A, 0 0 0 5px rgb(124 200 255 / 0.7);
 }

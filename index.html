@@ -48,22 +48,17 @@
 
     <div class="site-shell">
       <header class="topbar" aria-label="Navegacion principal">
-        <a class="brand" href="#inicio" aria-label="Ir al inicio">
-          <span class="brand-mark">
-            <img src="./assets/aecode-logo-principal-fondo-oscuro.png" alt="AECODE" />
-          </span>
-          <span class="brand-copy">
-            <strong>AI Construction Summit</strong>
-            <small>Estado integral 2026</small>
-          </span>
+        <a class="brand" href="#inicio" aria-label="AI Construction Summit 2026 - inicio">
+          <img class="brand-logo" src="./assets/summit-logo.svg" alt="AI Construction Summit 2026" width="776" height="163" />
+          <span class="brand-tag">Estatus</span>
         </a>
         <nav class="nav-pills" aria-label="Secciones">
+          <a href="#ejes">Ejes</a>
           <a href="#command-center">Command</a>
-          <a href="#info-evento">Informe</a>
           <a href="#dashboard">Dashboard</a>
           <a href="#areas">Areas</a>
-          <a href="#fechas">Fechas</a>
           <a href="#stands">Stands</a>
+          <a href="#entradas">Entradas</a>
           <a href="#riesgos">Riesgos</a>
         </nav>
         <div class="topbar-actions">
@@ -80,17 +75,22 @@
       </header>
 
       <main>
-        <section class="hero deck-slide" id="inicio">
+        <section class="hero deck-slide cmd-surface" id="inicio">
           <div class="hero-content">
-            <div class="eyebrow" id="cutDate" data-cut-prefix="Corte operativo consolidado">Corte operativo consolidado - 29 junio 2026</div>
-            <h1>Informe completo por areas para cierre del AI Construction Summit 2026</h1>
+            <div class="hero-eyebrow-row">
+              <span class="hero-edition">2&ordf; Edicion Internacional</span>
+              <span class="eyebrow" id="cutDate" data-cut-prefix="Corte operativo">Corte operativo - 29 junio 2026</span>
+            </div>
+            <img class="hero-logo" src="./assets/summit-logo.svg" alt="AI Construction Summit 2026" width="776" height="163" />
+            <h1 class="hero-claim">Donde la inteligencia artificial se encuentra con la innovacion en construccion</h1>
+            <p class="hero-meta">17 y 18 de julio, 2026 &middot; Auditorio Ing. Antonio Blanco Blasco &mdash; CIP, San Isidro, Lima</p>
             <p>
-              Vista ejecutiva, tablero de control, checklist por etapa, mapa de stands,
-              campos abiertos y proximas decisiones criticas para operar el cierre del evento.
+              Puente de mando del cierre operativo: areas, owners, riesgos, stands, hitos Go / No-Go
+              y el GEN+ AI Command Center. Lo publico del Summit, conectado a la operacion real.
             </p>
             <div class="hero-actions">
-              <a class="primary-link" href="#dashboard">Ver tablero</a>
-              <a class="secondary-link" href="#areas">Revisar areas</a>
+              <a class="primary-link" href="https://www.aecode.ai/summit2026/asistir" target="_blank" rel="noopener">Registrarme al Summit</a>
+              <a class="secondary-link" href="#dashboard">Ver estado del cierre</a>
             </div>
           </div>
           <aside class="hero-panel" aria-label="Resumen ejecutivo">
@@ -126,6 +126,10 @@
               </div>
             </dl>
           </aside>
+        </section>
+
+        <section class="summit-metrics deck-slide" aria-label="Metricas del Summit 2026">
+          <div class="summit-metrics-grid" id="summitMetrics"></div>
         </section>
 
         <section class="executive-strip" aria-label="Lectura ejecutiva">
@@ -268,6 +272,34 @@
             <article class="info-panel" id="themesPanel"></article>
             <article class="info-panel" id="nextEventsPanel"></article>
           </div>
+        </section>
+
+        <section class="section deck-slide" id="ejes">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Contenido oficial del Summit</div>
+              <h2>7 ejes tematicos del congreso</h2>
+            </div>
+            <p>
+              La agenda 2026 se ordena en siete frentes de IA aplicada a construccion,
+              ingenieria y arquitectura. Fuente: aecode.ai/summit.
+            </p>
+          </div>
+          <div class="ejes-grid" id="ejesGrid"></div>
+        </section>
+
+        <section class="section deck-slide" id="ruta">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Ruta de transformacion 2026</div>
+              <h2>De la masterclass al congreso</h2>
+            </div>
+            <p>
+              Tres etapas que llevan a la comunidad AEC desde los fundamentos de IA
+              hasta el encuentro internacional en el CIP.
+            </p>
+          </div>
+          <div class="stages-grid" id="stagesGrid"></div>
         </section>
 
         <section class="section deck-slide" id="estrategicas">
@@ -476,6 +508,34 @@
           <div class="post-grid" id="postEventGrid"></div>
         </section>
 
+        <section class="section deck-slide" id="entradas">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Participa</div>
+              <h2>Entradas e inversion</h2>
+            </div>
+            <p>
+              Desde la inscripcion libre hasta la delegacion corporativa. Precios oficiales
+              y registro en aecode.ai/summit.
+            </p>
+          </div>
+          <div class="tickets-grid" id="ticketsGrid"></div>
+        </section>
+
+        <section class="section deck-slide" id="sede">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Logistica del evento</div>
+              <h2>Sede oficial</h2>
+            </div>
+            <p>
+              El congreso se realiza en el Colegio de Ingenieros del Peru, en el corazon
+              empresarial de San Isidro.
+            </p>
+          </div>
+          <div id="venuePanel"></div>
+        </section>
+
         <section class="section sources deck-slide" id="fuentes">
           <div class="section-heading">
             <div>
@@ -497,6 +557,41 @@
           </div>
         </section>
       </main>
+
+      <footer class="site-footer">
+        <div class="footer-cta cmd-surface deck-slide">
+          <div>
+            <span class="gen-eyebrow">2&ordf; Edicion Internacional</span>
+            <h2>Nos vemos el 17 y 18 de julio en el CIP</h2>
+            <p>Asegura tu lugar en el AI Construction Summit 2026 - Lima, Peru.</p>
+          </div>
+          <a class="primary-link" href="https://www.aecode.ai/summit2026/asistir" target="_blank" rel="noopener">Registrarme ahora</a>
+        </div>
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="./assets/summit-logo.svg" alt="AI Construction Summit 2026" width="776" height="163" />
+            <p>Organiza AECODE &middot; Ingenieria 4.0 &amp; Programacion.</p>
+          </div>
+          <nav class="footer-links" aria-label="Enlaces del Summit">
+            <strong>Summit</strong>
+            <a href="https://www.aecode.ai/summit" target="_blank" rel="noopener">Pagina oficial</a>
+            <a href="https://www.aecode.ai/summit2026/asistir" target="_blank" rel="noopener">Inscripcion libre</a>
+            <a href="https://www.aecode.ai/summit2026/vip?modality=presencial" target="_blank" rel="noopener">VIP Presencial</a>
+            <a href="https://www.aecode.ai/summit2026/corporativo" target="_blank" rel="noopener">Delegacion corporativa</a>
+          </nav>
+          <nav class="footer-links" aria-label="Comunidad AECODE">
+            <strong>Comunidad</strong>
+            <a href="https://www.linkedin.com/company/aecode-ai" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.instagram.com/aecode.ai" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.youtube.com/@aecode_ai" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://chat.whatsapp.com/KfFAfTIWGXq34ARUIKZG76" target="_blank" rel="noopener">Canal WhatsApp</a>
+          </nav>
+        </div>
+        <div class="footer-bottom">
+          <span>AECODE 2026 &middot; Todos los derechos reservados.</span>
+          <span>Micrositio de estatus interno &middot; datos operativos en modo demo.</span>
+        </div>
+      </footer>
     </div>
 
     <dialog class="command-dialog" id="commandDialog" aria-labelledby="commandTitle">
