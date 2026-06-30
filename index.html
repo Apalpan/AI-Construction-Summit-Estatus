@@ -30,10 +30,11 @@
           </span>
         </a>
         <nav class="nav-pills" aria-label="Secciones">
+          <a href="#info-evento">Informe</a>
           <a href="#dashboard">Dashboard</a>
           <a href="#areas">Areas</a>
+          <a href="#fechas">Fechas</a>
           <a href="#stands">Stands</a>
-          <a href="#gonogo">Go / No-Go</a>
           <a href="#riesgos">Riesgos</a>
         </nav>
         <button class="print-button" type="button" data-action="print">Exportar PDF</button>
@@ -58,7 +59,7 @@
             <div class="status-chip status-critical">Sprint critico</div>
             <dl class="hero-metrics">
               <div>
-                <dt>16</dt>
+                <dt>17</dt>
                 <dd>frentes operativos</dd>
               </div>
               <div>
@@ -90,6 +91,39 @@
             <span>Prioridad 3</span>
             <strong>Probar web, app, GHL, QR, registro, pagos y fallback manual.</strong>
           </article>
+        </section>
+
+        <section class="section deck-slide" id="info-evento">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Resumen ejecutivo actualizado</div>
+              <h2>Informacion general, temas y alcance del Summit</h2>
+            </div>
+            <p>
+              Evento hibrido para acelerar adopcion de IA y tecnologias digitales
+              en AEC, integrando congreso, precongreso, feria, demos, sponsors,
+              comunidad y ventas B2B/B2C.
+            </p>
+          </div>
+          <div class="info-grid">
+            <article class="info-panel" id="eventInfoPanel"></article>
+            <article class="info-panel" id="themesPanel"></article>
+            <article class="info-panel" id="nextEventsPanel"></article>
+          </div>
+        </section>
+
+        <section class="section deck-slide" id="estrategicas">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Areas estrategicas</div>
+              <h2>Bloques clave del proyecto</h2>
+            </div>
+            <p>
+              Lectura ampliada de marketing, speakers, experiencia, tecnologia,
+              diseno, logistica, equipo, contenido, aliados y produccion audiovisual.
+            </p>
+          </div>
+          <div class="strategic-grid" id="strategicGrid"></div>
         </section>
 
         <section class="section deck-slide" id="dashboard">
@@ -233,6 +267,20 @@
           <div class="timeline" id="goNoGoTimeline"></div>
         </section>
 
+        <section class="section deck-slide" id="fechas">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Fechas clave</div>
+              <h2>Cronograma de cierre operativo</h2>
+            </div>
+            <p>
+              Hitos que concentran diseno, ventas, tecnologia, comunicaciones,
+              demos, QR, transmision, curso F3, B2B Training y post-evento.
+            </p>
+          </div>
+          <div class="milestone-grid" id="milestoneGrid"></div>
+        </section>
+
         <section class="section deck-slide" id="riesgos">
           <div class="section-heading">
             <div>
@@ -256,6 +304,20 @@
           </div>
         </section>
 
+        <section class="section deck-slide" id="post-evento">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Post-evento</div>
+              <h2>Activos, evidencia y conversion despues del Summit</h2>
+            </div>
+            <p>
+              El cierre no termina con el evento: debe convertirse en prueba de
+              autoridad, leads, ventas, investigacion, contenido y renovaciones.
+            </p>
+          </div>
+          <div class="post-grid" id="postEventGrid"></div>
+        </section>
+
         <section class="section sources deck-slide" id="fuentes">
           <div class="section-heading">
             <div>
@@ -273,6 +335,7 @@
             <span>Organizacion por areas</span>
             <span>Mapa de stands</span>
             <span>CRM sponsors</span>
+            <span>Resumen ejecutivo ampliado</span>
           </div>
         </section>
       </main>

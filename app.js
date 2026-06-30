@@ -1,11 +1,167 @@
 const summitData = {
   kpis: [
-    { label: "Frentes operativos", value: "16", detail: "Direccion + areas maestras", tone: "purple" },
+    { label: "Frentes operativos", value: "17", detail: "Direccion + areas maestras", tone: "purple" },
     { label: "Tareas base", value: "333", detail: "Checklist antes, durante y despues", tone: "blue" },
     { label: "Stands numerados", value: "31", detail: "Diamante, Gold y Silver", tone: "green" },
     { label: "Ocupados", value: "20", detail: "Confirmados en mapa operativo", tone: "violet" },
     { label: "Go / No-Go", value: "10", detail: "Hitos de aprobacion ejecutiva", tone: "amber" },
     { label: "Campos abiertos", value: "21", detail: "No se tiene claro / por asignar", tone: "red" }
+  ],
+  eventInfo: [
+    { label: "Nombre", value: "AI Construction Summit" },
+    { label: "Congreso", value: "17 y 18 de julio" },
+    { label: "Precongreso", value: "8 y 9 de julio" },
+    { label: "Ubicacion", value: "CIP, San Isidro, Lima" },
+    { label: "Organizacion", value: "AECODE | Ingenieria 4.0 & Programacion" },
+    { label: "Formato", value: "Hibrido: presencial + Zoom" },
+    { label: "Transmision", value: "Dual: 1 canal audio + 1 pantalla" }
+  ],
+  themes: [
+    "Automatizacion e IA aplicada",
+    "BIM avanzado",
+    "Gemelos digitales",
+    "Realidad virtual y aumentada",
+    "Computer vision",
+    "IoT",
+    "Drones y robotica",
+    "Construccion inteligente y conectada",
+    "Productividad basada en datos"
+  ],
+  nextEvents: [
+    "AI Construction Summit Edicion 3 - julio del proximo anio.",
+    "Hackathon Vibe Coding AI AEC + Empresas - octubre."
+  ],
+  strategicTracks: [
+    {
+      title: "Marketing y difusion",
+      owners: "Anggie + Jessica + Enma + Genesis",
+      objective: "Activar demanda, asistencia, prueba social, ventas VIP y seguimiento multicanal.",
+      items: [
+        "GHL Automation para flujos Summit, VIP, free -> VIP y seguimiento comercial.",
+        "Mail marketing, diseno de correos y secuencias por segmento.",
+        "Landing pages con enrutado, CTA, pagos, tracking y WhatsApp.",
+        "WhatsApp Business, grupos internos/externos y base de datos.",
+        "Publicaciones de speakers con badge, agenda, copy y prueba social.",
+        "Video promocional de 2 minutos y piezas de valor/comercial."
+      ]
+    },
+    {
+      title: "Speakers y moderadores",
+      owners: "Fabrizio + Daniella + Erika + Paola",
+      objective: "Cerrar agenda, confirmaciones, plantillas, guias, recepcion y control durante evento.",
+      items: [
+        "Precongreso miercoles 8: Carlos Ortiz, Braghan Paramanthan, Carolina Briones, Alex Morris, Bruno Capuano y panel.",
+        "Precongreso jueves 9: Martin Fischer, Ruben Fratini, Nestor Jaimez y Leonardo Rischmoller.",
+        "Moderadores: Caterine Ricaldi, Manuel Aguilar, Santiago Ruiz, Saul Ortiz, Jose Carlos Lima, Ronald Barzola y Lilimar Rivera.",
+        "Seguimiento de estatus, numeros, cargos, empresas, fotos, titulos y peticiones adicionales.",
+        "PPT plantilla, guia de presentacion y guia de moderacion.",
+        "Recepcion y escolta: Julie, Ivana, Adriana y Piero."
+      ]
+    },
+    {
+      title: "Experiencia de usuario",
+      owners: "Erika + Yudely + Genesis + Paola",
+      objective: "Disenar el recorrido presencial y virtual para que cada usuario sepa donde ir, que hacer y como conectar.",
+      items: [
+        "Presencial: networking, encuestas, votaciones, dinamica de puentes y ruleta UX futuro.",
+        "Virtual: Zoom con seguimiento, preguntas y transmision dual.",
+        "AECODITO tamano real como punto de experiencia y marca.",
+        "Ruta de AECODITO con canje: F3, descuentos y merchandising.",
+        "Flujos diferenciados para free, VIP, sponsors, delegaciones, ponentes y staff.",
+        "Fallback manual para registro, pagos, QR o app."
+      ]
+    },
+    {
+      title: "Tecnologia y demos",
+      owners: "Emanuel + Marlon + Yudely + Erika",
+      objective: "Mostrar tecnologia real y asegurar que app, demos, datos y automatizaciones funcionen sin friccion.",
+      items: [
+        "Confirmados: AF Robotics, Aecodito AI APP, robots UCV/ESAN, Glexco/Zox, lentes AR/VR, hologramas, ANIN VR, drones y totems.",
+        "Stand GEN+: VisionPRO, Raspberry + Jetson, impresion 3D y demos de edge AI.",
+        "Control por voz/acciones con Edge AI + Gemma 4 + Whisper.",
+        "PPT de proyectos y agentes para GEN+.",
+        "QR, networking digital, verificacion de pagos y reporte automatizado de boletas.",
+        "Dashboard de asistentes, sponsors, leads, ventas y conversion."
+      ]
+    },
+    {
+      title: "Diseno y produccion",
+      owners: "Yary + Adriana + Anggie + Enma",
+      objective: "Producir todos los activos visuales, impresos, pantallas y elementos fisicos que sostienen la experiencia.",
+      items: [
+        "2 banners, 1 backing, piezas para pantallas y senaleticas.",
+        "2 flyers con QR: uno de valor y uno comercial.",
+        "Diapositivas, lanyards, certificados, tarjetas y OnePage AECODE.",
+        "Aecodito 3D con QR.",
+        "Piezas de speakers, sponsors, agenda, CIP y feria.",
+        "Control visual de marca para AECODE, GEN+, ThesIA y Summit."
+      ]
+    },
+    {
+      title: "Logistica y coordinacion",
+      owners: "Erika + Daniella + Marlon + Administracion",
+      objective: "Asegurar venue, montaje, horarios, infraestructura, kit, registro y desmontaje.",
+      items: [
+        "CIP: viernes hasta 9pm, sabado hasta 7pm, publicacion web, pagos y facturacion.",
+        "Stands: instalacion jueves 16, un dia antes, coordinando con evento previo; desmontaje domingo mediodia.",
+        "Infraestructura: red electrica, WiFi, comunicadores, portico y stand de recepcion.",
+        "Maquina de fotos, robot fotografico, polos, catering y kit.",
+        "Kit: lanyards, folders, stickers, tarjetas y bolsas.",
+        "Fotochecks con maquina y control de credenciales."
+      ]
+    },
+    {
+      title: "Equipo operativo y voluntarios",
+      owners: "Erika + Paola + Adriana",
+      objective: "Asignar roles claros para staff, edecanes, embajadores y soporte por zona.",
+      items: [
+        "Staff base: Yudely, Marlon, Anggie, Daniella, Erika, Fabrizio, Emanuel y Yary.",
+        "Edecanes/voluntarios: Lizeth, Ana, Milagros, Cristhian, Piero, Margareth, Khris UPC, Angie Maravi, Sebastian, Felipe e Ivana.",
+        "Roles por zona: recepcion, VIP, sponsors, ponentes, feria, cabina, sala y networking.",
+        "Manual rapido y visita previa al venue.",
+        "Comunicadores o sistema interno por canales.",
+        "Beneficios: certificado, camisa y participacion."
+      ]
+    },
+    {
+      title: "Contenido academico y B2B",
+      owners: "Fabrizio + Anggie + Erika + Genesis",
+      objective: "Conectar contenido academico con productos F3, microlearning y capacitaciones corporativas.",
+      items: [
+        "Curso AI F3 Microlearning: fundamentos, overview y ejercicios.",
+        "Microlearning, testeo y regalos: prompts, tips y trucos.",
+        "Capsulas hasta domingo 6 y lanzamiento 10 de julio.",
+        "B2B Training AI: lunes 20 de julio, 5pm a 9pm, auditorio 60 pax, sotano 4 CIP.",
+        "Piezas, presentacion e invitacion a gerentes.",
+        "Registro de datos, empresas y oportunidades B2B."
+      ]
+    },
+    {
+      title: "Aliados y proveedores",
+      owners: "Erika + Paola + Administracion",
+      objective: "Formalizar aliados, media partners, snacks, proveedores y compromisos de apoyo.",
+      items: [
+        "Aliados: OlimpiaBIM, ACRE y plataforma 360 por formalizar.",
+        "5 empresas de snacks por coordinar.",
+        "Proveedores de transmision, hologramas, acreditacion, banners, portico, luces y merchandising.",
+        "Cada proveedor debe tener costo, contacto, fecha, alcance, decision y evidencia.",
+        "Separar proveedor confirmado, por cotizar, descartado y pendiente de pago.",
+        "Asegurar que administracion tenga factura, OS, comprobante y responsable."
+      ]
+    },
+    {
+      title: "Produccion audiovisual",
+      owners: "Marlon + Daniella + proveedor audiovisual",
+      objective: "Garantizar transmision, camaras, edicion, fotos, plantillas y respaldo de contenido.",
+      items: [
+        "Proveedor de transmision con cotizacion validada por Daniella y Marlon.",
+        "Equipo de camaras y configuracion para modalidad hibrida.",
+        "Templates DaVinci y flujo de edicion.",
+        "Fotos a Google Drive con estructura por dia, bloque y sponsor.",
+        "Hologramas y contenido para pantallas.",
+        "Backups de grabacion, clips, entrevistas y testimonios."
+      ]
+    }
   ],
   priorities: [
     "Cruzar sponsor x pago x stand x beneficio x pieza x delegacion.",
@@ -13,7 +169,9 @@ const summitData = {
     "Cerrar agenda, speakers, moderadores, guia de ponente y PPT maestra.",
     "Probar link de ventas, pagos, GHL, QR, app, registro y fallback manual.",
     "Resolver 720BIM, modulo SENCICO, stand 30 y espacios libres Diamante/Gold.",
-    "Validar proveedores criticos: transmision, credenciales, portico, banners, luces y acreditacion."
+    "Validar proveedores criticos: transmision, credenciales, portico, banners, luces y acreditacion.",
+    "Cerrar experiencia AECODITO, demos tecnologicas, stand GEN+ y ruta de canje.",
+    "Dejar listo el cronograma post-evento: fotos, clips, testimonios, metricas, investigacion y sponsors."
   ],
   ownerLoad: [
     { owner: "Erika", scope: "Sponsors, experiencia, venue, proveedores", load: 95 },
@@ -209,11 +367,14 @@ const summitData = {
         "Confirmar jueves: Martin Fischer, Ruben Fratini, Nestor Jaimez, Leonardo Rischmoller.",
         "Confirmar moderadores: Caterine Ricaldi, Manuel Aguilar, Santiago Ruiz, Saul Ortiz, Jose Carlos Lima, Ronald Barzola, Lilimar Rivera.",
         "Crear guia del ponente, guia de moderador y banco de preguntas de paneles.",
-        "Actualizar sheet de ponentes y cerrar PPT maestra."
+        "Actualizar sheet de ponentes y cerrar PPT maestra.",
+        "Entregar plantilla PPT para speakers y controlar estatus de envio/recepcion.",
+        "Definir protocolo de recepcion de speakers con Julie, Ivana, Adriana y Piero."
       ],
       during: [
         "Controlar agenda minuto a minuto.",
         "Gestionar llegada de speakers.",
+        "Ejecutar recepcion, escolta y sala VIP para ponentes.",
         "Coordinar WhatsApp Business de ponentes.",
         "Asegurar transiciones entre bloques.",
         "Registrar insights, frases y preguntas clave."
@@ -282,14 +443,17 @@ const summitData = {
         "Validar app, onboarding, check-in, QR y escaneo.",
         "Definir preguntas, encuestas y votaciones.",
         "Confirmar AECODITO AI APP.",
-        "Definir dashboard de asistentes, sponsors y ventas."
+        "Definir dashboard de asistentes, sponsors y ventas.",
+        "Validar verificacion automatizada de pagos y reporte de boletas.",
+        "Confirmar networking digital y trazabilidad de leads por stand."
       ],
       during: [
         "Monitorear registro y check-in.",
         "Capturar leads por stand, QR y app.",
         "Activar encuestas y votaciones.",
         "Resolver fallas tecnicas.",
-        "Consolidar data en tiempo real."
+        "Consolidar data en tiempo real.",
+        "Soportar AECODITO AI APP, AR/VR, drones, robots y demos."
       ],
       after: [
         "Enviar secuencias post-evento.",
@@ -320,13 +484,17 @@ const summitData = {
         "Configurar ads, pauta y mail marketing.",
         "Ejecutar difusion LinkedIn, Instagram, TikTok, WhatsApp y grupos.",
         "Crear kit de publicaciones para speakers y moderadores.",
-        "Crear flyers CIP, campanas VIP, free -> VIP y delegaciones corporativas."
+        "Crear flyers CIP, campanas VIP, free -> VIP y delegaciones corporativas.",
+        "Configurar landing pages con enrutado por segmento.",
+        "Preparar video promo de 2 minutos con copy, agenda y prueba social.",
+        "Crear badges de speakers y publicaciones por agenda."
       ],
       during: [
         "Cobertura en vivo: historias, reels, entrevistas, fotos y clips.",
         "Publicaciones de speakers y sponsors.",
         "Capturar momentos de autoridad.",
-        "Activar llamados a compra, comunidad y cursos."
+        "Activar llamados a compra, comunidad y cursos.",
+        "Amplificar networking, demos, feria, AECODITO y contenido de sponsors."
       ],
       after: [
         "Post resumen, clips por speaker y post de sponsors.",
@@ -343,6 +511,40 @@ const summitData = {
       urgency: "Alta"
     },
     {
+      id: "diseno-produccion",
+      title: "Diseno y produccion de piezas",
+      owner: "Yary + Adriana + Anggie",
+      support: "Enma, Erika, Marlon, Fabrizio",
+      maturity: 55,
+      objective: "Cerrar todos los activos visuales, impresos, digitales y fisicos necesarios para que el evento se perciba premium, ordenado y comercial.",
+      before: [
+        "Cerrar 2 banners, 1 backing, piezas para pantallas y senaleticas.",
+        "Crear 2 flyers con QR: uno de valor y uno comercial.",
+        "Disenar diapositivas, lanyards, certificados, tarjetas y OnePage AECODE.",
+        "Definir Aecodito 3D con QR.",
+        "Preparar piezas para speakers, sponsors, agenda, CIP, feria y redes.",
+        "Validar consistencia visual AECODE, GEN+, ThesIA y Summit."
+      ],
+      during: [
+        "Asegurar que pantallas, banners, backing, senaleticas y piezas impresas esten visibles y correctas.",
+        "Entregar piezas de apoyo a recepcion, stand AECODE, stand GEN+ y cabina.",
+        "Resolver ajustes rapidos de piezas si cambia agenda, ponente o sponsor."
+      ],
+      after: [
+        "Ordenar archivos finales editables y exportados.",
+        "Entregar assets para post oficial, sponsors, speakers, clips y reporte ejecutivo.",
+        "Guardar kit visual reutilizable para proxima edicion."
+      ],
+      risks: [
+        "Piezas impresas con datos desactualizados.",
+        "Falta de senaletica puede romper la experiencia de ingreso y circulacion.",
+        "No tener backing, banners o pantallas listos reduce percepcion premium.",
+        "Aecodito 3D con QR puede quedar como idea si no tiene owner y fecha de entrega."
+      ],
+      evidence: "Nuevo resumen ejecutivo y tablero de diseno/produccion.",
+      urgency: "Alta"
+    },
+    {
       id: "ux",
       title: "Experiencia de usuario durante el evento",
       owner: "Erika + Yudely",
@@ -354,14 +556,17 @@ const summitData = {
         "Definir registro, credencial, mapa, agenda, totems y senaletica.",
         "Definir zona VIP, networking, feria y auditorio.",
         "Definir pasaporte/gamificacion.",
-        "Preparar customer journey fisico/digital y fallback manual."
+        "Preparar customer journey fisico/digital y fallback manual.",
+        "Disenar dinamica de puentes, ruleta UX futuro, votaciones y encuestas.",
+        "Definir Ruta de AECODITO con canje: F3, descuentos y merchandising."
       ],
       during: [
         "Guiar ingreso y registro.",
         "Dirigir flujo hacia feria empresarial.",
         "Activar networking y stands.",
         "Monitorear fricciones.",
-        "Resolver dudas con staff y medir satisfaccion rapida."
+        "Resolver dudas con staff y medir satisfaccion rapida.",
+        "Operar experiencia virtual por Zoom con seguimiento y preguntas."
       ],
       after: [
         "Enviar encuesta NPS.",
@@ -391,12 +596,15 @@ const summitData = {
         "Cruzar stands con pago, beneficio y requerimientos.",
         "Preparar mapa publico y mapa operativo interno.",
         "Disenar stand AECODE 03-04 y stand GEN+ / Vision Pro AI 27.",
-        "Definir guiones comerciales, flujo de leads, demos y material impreso."
+        "Definir guiones comerciales, flujo de leads, demos y material impreso.",
+        "Confirmar stand GEN+: VisionPRO, Raspberry + Jetson, impresion 3D y control por voz/acciones.",
+        "Preparar PPT de proyectos y agentes para GEN+."
       ],
       during: [
         "Operar stand AECODE.",
         "Capturar leads.",
         "Activar demos Vision Pro / iCode / AI.",
+        "Activar demos Edge AI + Gemma 4 + Whisper si estan listas.",
         "Guiar asistentes hacia sponsors.",
         "Medir trafico por stand y cerrar ventas B2C / oportunidades B2B."
       ],
@@ -426,14 +634,18 @@ const summitData = {
         "Confirmar proveedor audiovisual, transmision y electricidad.",
         "Confirmar pantallas, microfonos, audio, camaras y ubicacion de cabina.",
         "Confirmar grabacion, backups y montaje de stands.",
-        "Ejecutar ensayo tecnico general y checklist firmado."
+        "Ejecutar ensayo tecnico general y checklist firmado.",
+        "Validar horarios CIP: viernes hasta 9pm y sabado hasta 7pm.",
+        "Coordinar instalacion de stands jueves 16 y desmontaje domingo mediodia.",
+        "Validar red electrica, WiFi, comunicadores, portico y stand de recepcion."
       ],
       during: [
         "Operar audio, video y transmision.",
         "Monitorear fallas.",
         "Controlar cambios de PPT.",
         "Grabar contenido.",
-        "Coordinar ponentes con cabina."
+        "Coordinar ponentes con cabina.",
+        "Controlar transmision dual: 1 canal audio + 1 pantalla."
       ],
       after: [
         "Descargar y respaldar grabaciones.",
@@ -460,7 +672,9 @@ const summitData = {
         "Cotizar langers, credenciales, robot fotografico, impresion rapida de fotos y stickers.",
         "Cotizar luces, CE Corporacion Eventos, banners, portico, hologramas y acreditacion.",
         "Cotizar transmision audiovisual.",
-        "Seleccionar proveedores, confirmar fechas de entrega y registrar todo en matriz."
+        "Seleccionar proveedores, confirmar fechas de entrega y registrar todo en matriz.",
+        "Cerrar maquina de fotos, robot fotografico, polos, catering y kit.",
+        "Confirmar kit: lanyards, folders, stickers, tarjetas, bolsas y fotochecks con maquina."
       ],
       during: [
         "Supervisar entrega y montaje.",
@@ -592,6 +806,141 @@ const summitData = {
       urgency: "Alta"
     }
   ],
+  milestones: [
+    {
+      date: "29-30 jun",
+      title: "Cierres base",
+      items: [
+        "Cierres de diseno, flyers, base y ventas.",
+        "Automatizacion + AI para seguimiento.",
+        "Ajuste de mensajes, piezas y rutas comerciales."
+      ]
+    },
+    {
+      date: "1 jul",
+      title: "Curso F3 completo",
+      items: [
+        "Estructura final del curso AI F3 Microlearning.",
+        "Fundamentos, overview, ejercicios, testeo y regalos.",
+        "Definir conexion con Summit, precongreso y ventas."
+      ]
+    },
+    {
+      date: "3 jul",
+      title: "Camaras",
+      items: [
+        "Validar camaras, equipo tecnico y necesidades de transmision.",
+        "Revisar compatibilidad con auditorio y feria.",
+        "Cerrar responsables de grabacion y respaldo."
+      ]
+    },
+    {
+      date: "5 jul",
+      title: "Cierre tecnico y comercial",
+      items: [
+        "Cotizacion transmision, demos y comunicaciones finales.",
+        "Flyer AECODE, B2B, Stand GEN+, AR/VR, certificados, QR y ruleta.",
+        "Confirmar proveedores, pantallas, cabina, portico y piezas criticas."
+      ]
+    },
+    {
+      date: "6 jul",
+      title: "Capsulas F3",
+      items: [
+        "Terminar capsulas de microlearning.",
+        "Validar regalos: prompts, tips y trucos.",
+        "Preparar material de lanzamiento."
+      ]
+    },
+    {
+      date: "8-9 jul",
+      title: "Precongreso",
+      items: [
+        "Ejecutar agenda 12:00 p.m. a 3:00 p.m.",
+        "Operar speakers internacionales, paneles y moderadores.",
+        "Capturar contenido y leads para Summit principal."
+      ]
+    },
+    {
+      date: "10 jul",
+      title: "Lanzamiento curso",
+      items: [
+        "Lanzar curso AI F3 Microlearning.",
+        "Activar piezas, landing, comunicacion y seguimiento.",
+        "Conectar con funnel Summit, comunidad y B2B."
+      ]
+    },
+    {
+      date: "12 jul",
+      title: "Ajustes QR",
+      items: [
+        "Ajustar QR, app, registro y verificacion de pagos.",
+        "Probar flujo completo con fallback manual.",
+        "Cerrar reporte de boletas automatizado."
+      ]
+    },
+    {
+      date: "16 jul",
+      title: "Montaje stands",
+      items: [
+        "Instalacion de stands un dia antes.",
+        "Coordinar con evento previo en CIP.",
+        "Validar electricidad, WiFi, mobiliario, banners y senaletica."
+      ]
+    },
+    {
+      date: "17-18 jul",
+      title: "Congreso",
+      items: [
+        "Ejecutar evento hibrido en CIP.",
+        "Operar feria, demos, sponsors, UX presencial, Zoom y transmision dual.",
+        "Capturar fotos, videos, testimonios, leads y ventas."
+      ]
+    },
+    {
+      date: "20 jul",
+      title: "B2B Training AI",
+      items: [
+        "Lunes 20 de julio, 5pm a 9pm.",
+        "Auditorio 60 pax, sotano 4 CIP.",
+        "Invitacion a gerentes, registro de empresas y oportunidades B2B."
+      ]
+    }
+  ],
+  postEvent: [
+    {
+      title: "Comunicacion publica",
+      items: [
+        "Post oficial del Summit.",
+        "Publicaciones de speakers y sponsors.",
+        "Evidencia de agenda, feria, stands, demos y sala."
+      ]
+    },
+    {
+      title: "Contenido y autoridad",
+      items: [
+        "Fotos y videos organizados en Google Drive.",
+        "Clips por speaker, panel, demo, sponsor y experiencia.",
+        "Testimonios de asistentes, sponsors, ponentes y equipo."
+      ]
+    },
+    {
+      title: "Metricas y conversion",
+      items: [
+        "Metricas y graficas de asistencia, leads, ventas, sponsors y engagement.",
+        "Conversion free -> VIP, stand -> lead, lead -> venta, sponsor -> reunion.",
+        "Reporte de beneficios entregados por sponsor."
+      ]
+    },
+    {
+      title: "Investigacion AEC",
+      items: [
+        "Investigacion del nivel de AI en AEC.",
+        "Insights por empresas, profesionales, tecnologias y barreras.",
+        "Transformar resultados en blog, reporte, contenido y propuesta B2B."
+      ]
+    }
+  ],
   stands: [
     {
       zone: "Diamante",
@@ -675,6 +1024,59 @@ function renderKpis() {
         <span>${kpi.label}</span>
         <strong>${kpi.value}</strong>
         <p>${kpi.detail}</p>
+      </article>`
+    )
+    .join("");
+}
+
+function renderEventInfo() {
+  qs("#eventInfoPanel").innerHTML = `
+    <div class="card-heading">
+      <span class="mini-label">Evento</span>
+      <h3>Informacion general</h3>
+    </div>
+    <dl class="info-list">
+      ${summitData.eventInfo
+        .map((item) => `<div><dt>${item.label}</dt><dd>${item.value}</dd></div>`)
+        .join("")}
+    </dl>
+  `;
+
+  qs("#themesPanel").innerHTML = `
+    <div class="card-heading">
+      <span class="mini-label">Contenido</span>
+      <h3>Temas principales</h3>
+    </div>
+    <div class="tag-cloud">
+      ${summitData.themes.map((theme) => `<span>${theme}</span>`).join("")}
+    </div>
+  `;
+
+  qs("#nextEventsPanel").innerHTML = `
+    <div class="card-heading">
+      <span class="mini-label">Expansion</span>
+      <h3>Proximos eventos</h3>
+    </div>
+    <ul class="priority-list">
+      ${summitData.nextEvents.map((event) => `<li>${event}</li>`).join("")}
+    </ul>
+  `;
+}
+
+function renderStrategicTracks() {
+  qs("#strategicGrid").innerHTML = summitData.strategicTracks
+    .map(
+      (track, index) => `
+      <article class="strategic-card">
+        <div class="strategic-head">
+          <span>${String(index + 1).padStart(2, "0")}</span>
+          <div>
+            <h3>${track.title}</h3>
+            <p>${track.objective}</p>
+          </div>
+        </div>
+        <div class="owner-line compact"><strong>Responsables:</strong> ${track.owners}</div>
+        <ul>${listMarkup(track.items)}</ul>
       </article>`
     )
     .join("");
@@ -826,9 +1228,34 @@ function renderGoNoGo() {
     .join("");
 }
 
+function renderMilestones() {
+  qs("#milestoneGrid").innerHTML = summitData.milestones
+    .map(
+      (milestone) => `
+      <article class="milestone-card">
+        <span>${milestone.date}</span>
+        <h3>${milestone.title}</h3>
+        <ul>${listMarkup(milestone.items)}</ul>
+      </article>`
+    )
+    .join("");
+}
+
 function renderRisks() {
   qs("#riskList").innerHTML = summitData.risks.map((risk) => `<li>${risk}</li>`).join("");
   qs("#openFields").innerHTML = summitData.openFields.map((field) => `<li>${field}</li>`).join("");
+}
+
+function renderPostEvent() {
+  qs("#postEventGrid").innerHTML = summitData.postEvent
+    .map(
+      (block) => `
+      <article class="post-card">
+        <h3>${block.title}</h3>
+        <ul>${listMarkup(block.items)}</ul>
+      </article>`
+    )
+    .join("");
 }
 
 function bindInteractions() {
@@ -851,13 +1278,17 @@ function bindInteractions() {
 
 function init() {
   renderKpis();
+  renderEventInfo();
+  renderStrategicTracks();
   renderPriorities();
   renderOwnerBars();
   renderAreaBars();
   renderAreas();
   renderStands();
   renderGoNoGo();
+  renderMilestones();
   renderRisks();
+  renderPostEvent();
   bindInteractions();
 }
 

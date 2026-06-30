@@ -5,10 +5,14 @@ Micrositio ejecutivo para mostrar el estado operativo del AI Construction Summit
 ## Que incluye
 
 - Presentacion ejecutiva del estado del Summit.
+- Resumen general: fechas, ubicacion, organizacion, formato y transmision.
+- Mapa estrategico de marketing, speakers, UX, tecnologia, diseno, logistica, staff, contenido, aliados y audiovisual.
 - Dashboard con KPIs, prioridades P0, owners y madurez por area.
 - Checklist por area con antes, durante, despues y riesgos.
 - Mapa de stands con lectura por zona: Diamante, Gold y Silver.
 - Hitos Go / No-Go.
+- Cronograma de fechas clave.
+- Plan post-evento para evidencia, metricas, contenido e investigacion.
 - Campos abiertos marcados como `No se tiene claro`.
 - Modo impresion para exportar como PDF desde el navegador.
 
