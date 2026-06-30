@@ -1,0 +1,67 @@
+{
+  "name": "GEN+ AI Command Center Component Base",
+  "version": "2.0.0",
+  "dataPolicy": "MOCK GEN+ - conectar a API real",
+  "components": [
+    {
+      "id": "app-shell",
+      "purpose": "Dark executive shell with smart sidebar, top context and command trigger.",
+      "states": ["default", "collapsed", "mobile", "focus"]
+    },
+    {
+      "id": "mode-toggle",
+      "purpose": "Demo Mode / Cliente Real switch enforcing ISO 19650 and PDPL boundaries.",
+      "states": ["demo", "real-locked", "focus", "disabled"]
+    },
+    {
+      "id": "kpi-tile",
+      "purpose": "Decision KPI with value, delta, risk level and business implication.",
+      "states": ["default", "success", "warning", "critical", "loading", "empty"]
+    },
+    {
+      "id": "s-curve-card",
+      "purpose": "Physical progress vs valued progress vs planned curve for PM BIM/VDC.",
+      "states": ["default", "delayed", "on-track", "error"]
+    },
+    {
+      "id": "risk-heatmap",
+      "purpose": "Critical risk matrix for clashes, RFIs, permits, cost and schedule.",
+      "states": ["default", "selected", "critical", "empty"]
+    },
+    {
+      "id": "ai-agent-status",
+      "purpose": "AgentFlow, THESIA and VisionPro execution status with owner and next step.",
+      "states": ["running", "review", "blocked", "complete", "loading"]
+    },
+    {
+      "id": "decision-queue",
+      "purpose": "Ranked CEO/PM decisions with value at stake and direct action buttons.",
+      "states": ["default", "approved", "assigned", "escalated", "disabled"]
+    },
+    {
+      "id": "capacity-radial",
+      "purpose": "Team capacity load, burnout signal and resource imbalance.",
+      "states": ["healthy", "warning", "overload", "empty"]
+    },
+    {
+      "id": "command-bar",
+      "purpose": "Ctrl-K / Cmd-K action launcher with contextual AI suggestions.",
+      "states": ["closed", "open", "filtered", "empty", "keyboard-selected"]
+    },
+    {
+      "id": "ai-summary-panel",
+      "purpose": "Evidence-backed AI recommendation with human confirmation.",
+      "states": ["fresh", "stale", "loading", "needs-review", "error"]
+    },
+    {
+      "id": "project-context-card",
+      "purpose": "Project selector showing SPI, CPI, physical progress, RFIs and blockers.",
+      "states": ["selected", "hover", "focus", "disabled"]
+    },
+    {
+      "id": "activity-kanban-preview",
+      "purpose": "Hybrid operational activity board preview for next iteration.",
+      "states": ["empty", "active", "filtered", "overdue", "loading"]
+    }
+  ]
+}

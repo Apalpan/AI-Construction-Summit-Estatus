@@ -1,3 +1,70 @@
+// GEN+ v2.0
+// MOCK GEN+ - conectar a API real. No contiene datos confidenciales de clientes.
+const genPlusData = {
+  jtbd: [
+    {
+      persona: "CEO Constructor",
+      job: "Ver dinero, riesgo y decisiones de alto impacto en menos de 8 segundos."
+    },
+    {
+      persona: "PM BIM/VDC",
+      job: "Controlar S-Curve, clashes, RFIs, LOD y productividad sin perseguir hojas sueltas."
+    },
+    {
+      persona: "Director Operaciones",
+      job: "Detectar capacidad, bloqueos, agentes IA ejecutando y decisiones pendientes por owner."
+    }
+  ],
+  businessKpis: [
+    { label: "Decision time", value: "<9 min", delta: "45 min antes", tone: "success" },
+    { label: "Adopcion diaria", value: "87%+", delta: "meta equipo", tone: "primary" },
+    { label: "Valor en juego", value: "$2.4M", delta: "esta semana", tone: "warning" },
+    { label: "SPI / CPI", value: "0.87 / 1.04", delta: "schedule en riesgo", tone: "critical" },
+    { label: "Bloqueos", value: "2", delta: "permisos", tone: "critical" }
+  ],
+  projects: [
+    { name: "Torre Platinum San Isidro - Etapa 3", spi: "0.94", cpi: "1.01", progress: "74%", status: "Controlado" },
+    { name: "Hospital Vitarte - Fase MEP", spi: "0.87", cpi: "1.04", progress: "67%", status: "Riesgo permisos" },
+    { name: "Via Expresa - Paquete 4", spi: "0.91", cpi: "0.98", progress: "58%", status: "Clashes criticos" }
+  ],
+  risks: [
+    { label: "Clashes", value: "3", level: "critical" },
+    { label: "RFIs", value: "7", level: "warning" },
+    { label: "Permisos", value: "2", level: "critical" },
+    { label: "Costo", value: "CPI 1.04", level: "success" },
+    { label: "SPI", value: "0.87", level: "critical" },
+    { label: "LOD", value: "En revision", level: "warning" }
+  ],
+  agents: [
+    { name: "AgentFlow", state: "Activo", task: "Asignando responsable a RFI-231", tone: "success" },
+    { name: "THESIA", state: "Activo", task: "Buscando evidencia normativa MEP", tone: "success" },
+    { name: "VisionPro", state: "Activo", task: "Comparando avance fisico con evidencia visual", tone: "primary" },
+    { name: "Cost Sentinel", state: "Revision", task: "Validando impacto de permisos", tone: "warning" }
+  ],
+  capacity: [
+    { team: "BIM/VDC", load: 82 },
+    { team: "Campo", load: 91 },
+    { team: "Costos", load: 64 },
+    { team: "IA/Automatizacion", load: 76 }
+  ],
+  decisions: [
+    { action: "Aprobar plano P-EL-092", impact: "$420K destrabados", owner: "PM MEP" },
+    { action: "Asignar agente a RFI-231", impact: "Reduce 2 dias de espera", owner: "AgentFlow" },
+    { action: "Escalar permiso municipal", impact: "Evita desvio SPI", owner: "Direccion" }
+  ],
+  components: [
+    "App Shell", "Mode Toggle", "KPI Tile", "S-Curve Card", "Risk Heatmap", "AI Agent Status",
+    "Decision Queue", "Capacity Radial", "Command Bar", "AI Summary Panel", "Project Context", "Kanban Preview"
+  ],
+  commands: [
+    { label: "Predecir retraso en Hospital Vitarte", hint: "IA / Riesgo", result: "Prediccion solicitada en modo demo." },
+    { label: "Aprobar plano P-EL-092", hint: "Decision / MEP", result: "Accion simulada: requiere API real." },
+    { label: "Asignar agente a RFI-231", hint: "AgentFlow", result: "AgentFlow asignado en modo demo." },
+    { label: "Ver bloqueos que estan matando productividad", hint: "PMO", result: "Filtro aplicado sobre bloqueos criticos." },
+    { label: "Crear reporte ejecutivo ISO 19650", hint: "THESIA", result: "Reporte simulado listo para conectar." }
+  ]
+};
+
 const summitData = {
   kpis: [
     { label: "Frentes operativos", value: "17", detail: "Direccion + areas maestras", tone: "purple" },
@@ -1029,6 +1096,86 @@ function renderKpis() {
     .join("");
 }
 
+function renderGenPlusCommandCenter() {
+  qs("#genProjectStack").innerHTML = genPlusData.projects
+    .map(
+      (project, index) => `
+      <button class="gen-project-card ${index === 1 ? "is-selected" : ""}" type="button">
+        <strong>${project.name}</strong>
+        <span>SPI ${project.spi} / CPI ${project.cpi} / Avance ${project.progress}</span>
+        <small>${project.status}</small>
+      </button>`
+    )
+    .join("");
+
+  qs("#jtbdList").innerHTML = genPlusData.jtbd
+    .map(
+      (item) => `
+      <article>
+        <span>${item.persona}</span>
+        <p>${item.job}</p>
+      </article>`
+    )
+    .join("");
+
+  qs("#genKpiRow").innerHTML = genPlusData.businessKpis
+    .map(
+      (kpi) => `
+      <article class="gen-kpi gen-${kpi.tone}">
+        <span>${kpi.label}</span>
+        <strong>${kpi.value}</strong>
+        <p>${kpi.delta}</p>
+      </article>`
+    )
+    .join("");
+
+  qs("#riskHeatmap").innerHTML = genPlusData.risks
+    .map(
+      (risk) => `
+      <button class="heat-cell heat-${risk.level}" type="button">
+        <strong>${risk.value}</strong>
+        <span>${risk.label}</span>
+      </button>`
+    )
+    .join("");
+
+  qs("#agentStack").innerHTML = genPlusData.agents
+    .map(
+      (agent) => `
+      <article class="agent-card agent-${agent.tone}">
+        <div><strong>${agent.name}</strong><span>${agent.task}</span></div>
+        <em>${agent.state}</em>
+      </article>`
+    )
+    .join("");
+
+  qs("#capacityPanel").innerHTML = genPlusData.capacity
+    .map(
+      (team) => `
+      <div class="capacity-row">
+        <div class="capacity-ring" style="--load:${team.load}%"><strong>${team.load}%</strong></div>
+        <span>${team.team}</span>
+      </div>`
+    )
+    .join("");
+
+  qs("#decisionList").innerHTML = genPlusData.decisions
+    .map(
+      (decision) => `
+      <article class="decision-action">
+        <strong>${decision.action}</strong>
+        <span>${decision.impact}</span>
+        <button type="button">Simular accion</button>
+        <small>Owner: ${decision.owner}</small>
+      </article>`
+    )
+    .join("");
+
+  qs("#componentList").innerHTML = genPlusData.components
+    .map((component) => `<span>${component}</span>`)
+    .join("");
+}
+
 function renderEventInfo() {
   qs("#eventInfoPanel").innerHTML = `
     <div class="card-heading">
@@ -1258,6 +1405,27 @@ function renderPostEvent() {
     .join("");
 }
 
+function renderCommandResults(query = "") {
+  const normalized = query.trim().toLowerCase();
+  const results = genPlusData.commands.filter((command) =>
+    `${command.label} ${command.hint}`.toLowerCase().includes(normalized)
+  );
+  qs("#commandCount").textContent = `${results.length} acciones disponibles`;
+  qs("#commandResults").innerHTML = results.length
+    ? results
+        .map(
+          (command, index) => `
+          <li>
+            <button type="button" data-command-result="${index}">
+              <strong>${command.label}</strong>
+              <span>${command.hint}</span>
+            </button>
+          </li>`
+        )
+        .join("")
+    : `<li class="command-empty">No hay resultados. Prueba con RFI, retraso, pago o agente.</li>`;
+}
+
 function bindInteractions() {
   qsa(".filter-button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -1274,9 +1442,50 @@ function bindInteractions() {
   });
 
   qs("[data-action='print']").addEventListener("click", () => window.print());
+
+  const commandDialog = qs("#commandDialog");
+  const commandInput = qs("#commandInput");
+  const openCommand = () => {
+    renderCommandResults("");
+    commandDialog.showModal();
+    commandInput.focus();
+  };
+  const closeCommand = () => commandDialog.close();
+
+  qsa("[data-command-open]").forEach((button) => button.addEventListener("mousedown", openCommand));
+  qs("[data-command-close]").addEventListener("click", closeCommand);
+  commandInput.addEventListener("input", (event) => renderCommandResults(event.target.value));
+  qs("#commandResults").addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+    button.dataset.executed = "true";
+    button.querySelector("span").textContent = "Ejecutado en modo demo";
+    window.setTimeout(closeCommand, 280);
+  });
+  document.addEventListener("keydown", (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      if (commandDialog.open) closeCommand();
+      else openCommand();
+    }
+    if (event.key === "Escape" && commandDialog.open) closeCommand();
+  });
+
+  const modeToggle = qs("[data-mode-toggle]");
+  modeToggle.addEventListener("click", () => {
+    const isDemo = modeToggle.getAttribute("aria-checked") === "true";
+    const nextIsDemo = !isDemo;
+    modeToggle.setAttribute("aria-checked", String(nextIsDemo));
+    document.body.dataset.dataMode = nextIsDemo ? "demo" : "real-locked";
+    qs("[data-mode-label]").textContent = nextIsDemo ? "Demo Mode" : "Cliente Real";
+    qs("[data-mode-copy]").textContent = nextIsDemo
+      ? "MOCK GEN+ - conectar a API real. Cliente Real bloqueado hasta validar permisos."
+      : "Cliente Real bloqueado: requiere API, consentimiento PDPL, segregacion y credenciales.";
+  });
 }
 
 function init() {
+  renderGenPlusCommandCenter();
   renderKpis();
   renderEventInfo();
   renderStrategicTracks();

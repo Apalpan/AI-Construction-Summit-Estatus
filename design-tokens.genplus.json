@@ -1,0 +1,82 @@
+{
+  "name": "GEN+ AI Operating System Tokens",
+  "version": "2.0.0",
+  "mode": "demo",
+  "dataPolicy": {
+    "classification": "MOCK GEN+ - conectar a API real",
+    "iso19650": true,
+    "pdplPeru": true,
+    "requiresDemoModeToggle": true,
+    "sensitiveDataSegregation": "No project/client confidential data is stored in this static demo."
+  },
+  "typography": {
+    "body": "'Plus Jakarta Sans', Inter, system-ui, sans-serif",
+    "display": "'Ruberoid Display', 'Plus Jakarta Sans', Inter, system-ui, sans-serif",
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 650,
+      "bold": 760,
+      "black": 820
+    },
+    "scale": {
+      "xs": "clamp(0.72rem, 0.70rem + 0.10vw, 0.78rem)",
+      "sm": "clamp(0.84rem, 0.80rem + 0.16vw, 0.94rem)",
+      "base": "clamp(1rem, 0.94rem + 0.24vw, 1.12rem)",
+      "lg": "clamp(1.16rem, 1.04rem + 0.42vw, 1.42rem)",
+      "xl": "clamp(1.42rem, 1.20rem + 0.84vw, 2rem)",
+      "display": "clamp(2.35rem, 1.45rem + 4.2vw, 5.75rem)"
+    }
+  },
+  "color": {
+    "light": {
+      "white": "#FFFFFF",
+      "bg": "#F4F7FF",
+      "bgElevated": "#E9F0FF"
+    },
+    "dark": {
+      "nav": "#040F20",
+      "premium": "#06142A",
+      "panel": "#071A36",
+      "deep": "#0A244C"
+    },
+    "brand": {
+      "primary": "#2165FF",
+      "primaryHover": "#1E5CE8",
+      "deepNavy": "#0E2A6B",
+      "successAEC": "#22C55E",
+      "criticalRisk": "#EF4444",
+      "warning": "#F59E0B",
+      "line": "#DCE5F2",
+      "muted": "#7A8AA0"
+    }
+  },
+  "radius": {
+    "xs": "8px",
+    "sm": "12px",
+    "md": "16px",
+    "lg": "24px"
+  },
+  "motion": {
+    "durationFast": "180ms",
+    "durationBase": "240ms",
+    "durationSlow": "280ms",
+    "easing": "cubic-bezier(0.23, 1, 0.32, 1)",
+    "reducedMotion": "Respect prefers-reduced-motion; remove movement, keep opacity/color state."
+  },
+  "shadow": {
+    "panel": "0 18px 60px rgba(4, 15, 32, 0.16)",
+    "command": "0 24px 90px rgba(4, 15, 32, 0.28)"
+  },
+  "componentStates": [
+    "default",
+    "hover",
+    "focus",
+    "active",
+    "disabled",
+    "loading",
+    "error",
+    "empty",
+    "selected"
+  ]
+}

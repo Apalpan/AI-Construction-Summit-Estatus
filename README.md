@@ -7,6 +7,9 @@ Micrositio ejecutivo para mostrar el estado operativo del AI Construction Summit
 - Presentacion ejecutiva del estado del Summit.
 - Resumen general: fechas, ubicacion, organizacion, formato y transmision.
 - Mapa estrategico de marketing, speakers, UX, tecnologia, diseno, logistica, staff, contenido, aliados y audiovisual.
+- Fase 0 GEN+ AI Command Center: JTBD, 5 KPIs de negocio, tokens JSON, 12 componentes base y una pantalla ejecutiva implementada.
+- Toggle `Demo Mode / Cliente Real` para mantener segregacion de datos sensible.
+- Command bar `Ctrl K` con acciones IA simuladas y listas para conectar a API real.
 - Dashboard con KPIs, prioridades P0, owners y madurez por area.
 - Checklist por area con antes, durante, despues y riesgos.
 - Mapa de stands con lectura por zona: Diamante, Gold y Silver.
@@ -26,6 +29,8 @@ El contenido se consolido desde el vault de Alejandro Palpan:
 - `AI-Construction-Summit-Team-Academico-Pendientes-2026-06-29.md`
 - `AI-Construction-Summit-Mapa-Stands-Confirmados-2026-06-29.md`
 - `CRM-Sponsors-AI-Construction-Summit-2026.md`
+- `design-tokens.genplus.json`
+- `components-base.genplus.json`
 
 ## Uso local
 

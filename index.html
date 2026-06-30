@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
@@ -30,6 +30,7 @@
           </span>
         </a>
         <nav class="nav-pills" aria-label="Secciones">
+          <a href="#command-center">Command</a>
           <a href="#info-evento">Informe</a>
           <a href="#dashboard">Dashboard</a>
           <a href="#areas">Areas</a>
@@ -91,6 +92,114 @@
             <span>Prioridad 3</span>
             <strong>Probar web, app, GHL, QR, registro, pagos y fallback manual.</strong>
           </article>
+        </section>
+
+        <section class="gen-command-shell deck-slide" id="command-center">
+          <div class="gen-command-top">
+            <div>
+              <div class="gen-eyebrow">Fase 0 implementada - GEN+ AI Operating System</div>
+              <h2>Decisiones que mueven $2.4M esta semana</h2>
+              <p>
+                Command Center demo para CEO constructor, PM BIM/VDC y Director de Operaciones.
+                Datos marcados como mock y listos para conectar a API real bajo ISO 19650 + PDPL Peru.
+              </p>
+            </div>
+            <div class="gen-mode-card">
+              <span>Segregacion de datos</span>
+              <button class="mode-switch" type="button" role="switch" aria-checked="true" data-mode-toggle>
+                <span class="mode-knob"></span>
+                <strong data-mode-label>Demo Mode</strong>
+              </button>
+              <small data-mode-copy>MOCK GEN+ - conectar a API real. Cliente Real bloqueado hasta validar permisos.</small>
+            </div>
+          </div>
+
+          <div class="gen-command-grid">
+            <aside class="gen-sidebar" aria-label="Contexto de producto">
+              <div class="gen-side-brand">
+                <strong>GEN+ OS</strong>
+                <span>AI-native PMO / BIM / VDC</span>
+              </div>
+              <div class="gen-project-stack" id="genProjectStack"></div>
+              <div class="jtbd-card">
+                <h3>Jobs to be done</h3>
+                <div id="jtbdList"></div>
+              </div>
+            </aside>
+
+            <div class="gen-main-panel">
+              <div class="gen-main-header">
+                <div>
+                  <span class="gen-eyebrow">Command Center Ejecutivo</span>
+                  <h3>Bloqueos que estan matando productividad</h3>
+                </div>
+                <button class="gen-command-trigger" type="button" data-command-open aria-haspopup="dialog">
+                  Ctrl K
+                  <span>Acciones IA</span>
+                </button>
+              </div>
+
+              <div class="gen-kpi-row" id="genKpiRow"></div>
+
+              <div class="gen-ops-grid">
+                <article class="gen-card gen-scurve-card">
+                  <div class="gen-card-head">
+                    <span>S-Curve</span>
+                    <strong>Avance fisico 67% / valorizado 71%</strong>
+                  </div>
+                  <svg viewBox="0 0 520 220" role="img" aria-label="Curva S de avance planificado, fisico y valorizado">
+                    <path class="grid-line" d="M20 180H500M20 130H500M20 80H500M20 30H500" />
+                    <path class="curve plan" d="M24 184 C120 176, 160 138, 210 110 C270 76, 360 42, 498 30" />
+                    <path class="curve physical" d="M24 184 C110 172, 165 150, 225 128 C290 104, 360 86, 498 70" />
+                    <path class="curve cost" d="M24 184 C118 166, 170 134, 238 105 C305 78, 392 58, 498 45" />
+                  </svg>
+                  <div class="curve-legend">
+                    <span><i class="plan-dot"></i>Plan</span>
+                    <span><i class="physical-dot"></i>Fisico</span>
+                    <span><i class="cost-dot"></i>Valorizado</span>
+                  </div>
+                </article>
+
+                <article class="gen-card">
+                  <div class="gen-card-head">
+                    <span>Heatmap riesgos</span>
+                    <strong>3 clashes criticos / 7 RFIs abiertos</strong>
+                  </div>
+                  <div class="risk-heatmap" id="riskHeatmap"></div>
+                </article>
+
+                <article class="gen-card">
+                  <div class="gen-card-head">
+                    <span>Agentes IA ejecutando</span>
+                    <strong>3 activos / 1 en revision</strong>
+                  </div>
+                  <div class="agent-stack" id="agentStack"></div>
+                </article>
+
+                <article class="gen-card">
+                  <div class="gen-card-head">
+                    <span>Carga equipo</span>
+                    <strong>Capacity planning</strong>
+                  </div>
+                  <div class="capacity-panel" id="capacityPanel"></div>
+                </article>
+              </div>
+            </div>
+
+            <aside class="gen-ai-panel" aria-label="Resumen IA">
+              <span class="gen-eyebrow">Resumen IA</span>
+              <h3>Proxima accion recomendada: Aprobar plano P-EL-092</h3>
+              <p>
+                El retraso de permisos afecta el SPI 0.87 y bloquea la liberacion MEP en Hospital Vitarte.
+                La aprobacion reduce riesgo de reproceso esta semana.
+              </p>
+              <div class="decision-list" id="decisionList"></div>
+              <div class="component-registry">
+                <h4>12 componentes base</h4>
+                <div id="componentList"></div>
+              </div>
+            </aside>
+          </div>
         </section>
 
         <section class="section deck-slide" id="info-evento">
@@ -340,6 +449,21 @@
         </section>
       </main>
     </div>
+
+    <dialog class="command-dialog" id="commandDialog" aria-labelledby="commandTitle">
+      <form class="command-box" method="dialog">
+        <header>
+          <h2 id="commandTitle">Command Center</h2>
+          <button type="button" aria-label="Cerrar command menu" data-command-close>Esc</button>
+        </header>
+        <label class="command-input">
+          <span>Buscar accion</span>
+          <input id="commandInput" type="search" placeholder="Predecir retraso, aprobar pago, asignar agente..." autocomplete="off" />
+        </label>
+        <p class="command-count" aria-live="polite" id="commandCount"></p>
+        <ul class="command-results" id="commandResults"></ul>
+      </form>
+    </dialog>
 
     <script src="./app.js" defer></script>
   </body>
