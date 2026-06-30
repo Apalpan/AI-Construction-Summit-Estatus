@@ -1089,7 +1089,7 @@ function renderKpis() {
       (kpi) => `
       <article class="kpi-card tone-${kpi.tone}">
         <span>${kpi.label}</span>
-        <strong>${kpi.value}</strong>
+        <strong${/^\d+$/.test(kpi.value) ? ` data-countup="${kpi.value}"` : ""}>${kpi.value}</strong>
         <p>${kpi.detail}</p>
       </article>`
     )
@@ -1405,25 +1405,231 @@ function renderPostEvent() {
     .join("");
 }
 
-function renderCommandResults(query = "") {
+// GEN+ v2.0 — inline icons (Lucide-style, single source)
+const ICON_ARROW =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>';
+const ICON_SPARK =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"></path></svg>';
+const ICON_CHECK =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>';
+
+// GEN+ v2.0 — navigation commands feed the same ⌘K palette as the IA actions.
+// This also restores navigation on mobile, where the nav-pills are hidden.
+const sectionCommands = [
+  { type: "nav", label: "GEN+ AI Command Center", hint: "Decisiones, S-Curve, agentes IA", target: "#command-center", kind: "Ir" },
+  { type: "nav", label: "Informe del evento", hint: "Informacion general y temas", target: "#info-evento", kind: "Ir" },
+  { type: "nav", label: "Areas estrategicas", hint: "Bloques clave del proyecto", target: "#estrategicas", kind: "Ir" },
+  { type: "nav", label: "Dashboard operativo", hint: "KPIs, prioridades P0, owners", target: "#dashboard", kind: "Ir" },
+  { type: "nav", label: "Checklist por areas", hint: "Antes, durante, despues y riesgos", target: "#areas", kind: "Ir" },
+  { type: "nav", label: "Mapa de stands", hint: "Diamante, Gold y Silver", target: "#stands", kind: "Ir" },
+  { type: "nav", label: "Hitos Go / No-Go", hint: "Criterios de aprobacion", target: "#gonogo", kind: "Ir" },
+  { type: "nav", label: "Fechas clave", hint: "Cronograma de cierre", target: "#fechas", kind: "Ir" },
+  { type: "nav", label: "Riesgos y campos abiertos", hint: "Lo que puede romper la ejecucion", target: "#riesgos", kind: "Ir" },
+  { type: "nav", label: "Post-evento", hint: "Evidencia, metricas y conversion", target: "#post-evento", kind: "Ir" }
+];
+
+const palette = { current: [], active: -1 };
+
+function buildCommands() {
+  const actions = genPlusData.commands.map((command) => ({
+    type: "action",
+    label: command.label,
+    hint: command.hint,
+    result: command.result,
+    kind: "IA"
+  }));
+  return [...sectionCommands, ...actions];
+}
+
+function renderCommand(query = "") {
   const normalized = query.trim().toLowerCase();
-  const results = genPlusData.commands.filter((command) =>
-    `${command.label} ${command.hint}`.toLowerCase().includes(normalized)
+  const all = buildCommands();
+  const filtered = normalized
+    ? all.filter((command) =>
+        `${command.label} ${command.hint} ${command.kind}`.toLowerCase().includes(normalized)
+      )
+    : all;
+
+  palette.current = filtered;
+  palette.active = filtered.length ? 0 : -1;
+
+  qs("#commandCount").textContent = `${filtered.length} ${filtered.length === 1 ? "resultado" : "resultados"}`;
+
+  const list = qs("#commandResults");
+  const input = qs("#commandInput");
+  if (!filtered.length) {
+    list.innerHTML =
+      '<li class="command-empty">No hay resultados. Prueba con riesgos, RFI, pago, agente o una seccion.</li>';
+    if (input) input.removeAttribute("aria-activedescendant");
+    return;
+  }
+
+  let index = 0;
+  const renderItem = (command) => {
+    const i = index++;
+    const icon = command.type === "nav" ? ICON_ARROW : ICON_SPARK;
+    return `
+      <li role="presentation">
+        <button type="button" role="option" id="cmd-opt-${i}" data-cmd-index="${i}" aria-selected="${i === palette.active}" class="${i === palette.active ? "is-active" : ""}">
+          <span class="cmd-ico ${command.type}">${icon}</span>
+          <span class="cmd-text"><strong>${command.label}</strong><span>${command.hint}</span></span>
+          <span class="cmd-kind">${command.kind}</span>
+        </button>
+      </li>`;
+  };
+
+  const nav = filtered.filter((command) => command.type === "nav");
+  const actions = filtered.filter((command) => command.type === "action");
+  const blocks = [];
+  if (nav.length) {
+    blocks.push('<li class="command-group-label" role="presentation">Navegacion</li>' + nav.map(renderItem).join(""));
+  }
+  if (actions.length) {
+    blocks.push('<li class="command-group-label" role="presentation">Acciones IA</li>' + actions.map(renderItem).join(""));
+  }
+  list.innerHTML = blocks.join("");
+  if (input && palette.active >= 0) input.setAttribute("aria-activedescendant", `cmd-opt-${palette.active}`);
+}
+
+// GEN+ v2.0 — toast for simulated / navigation feedback
+function showToast({ title, msg, kind = "action" }) {
+  const stack = qs("#toastStack");
+  if (!stack) return;
+  const toast = document.createElement("div");
+  toast.className = `toast ${kind}`;
+  toast.innerHTML = `
+    <span class="toast-ico">${kind === "nav" ? ICON_ARROW : ICON_CHECK}</span>
+    <strong>${title}</strong>
+    <span>${msg}</span>`;
+  stack.appendChild(toast);
+  const remove = () => {
+    toast.classList.add("is-leaving");
+    let removed = false;
+    const drop = () => {
+      if (removed) return;
+      removed = true;
+      toast.remove();
+    };
+    toast.addEventListener("animationend", drop, { once: true });
+    window.setTimeout(drop, 400);
+  };
+  window.setTimeout(remove, 3200);
+}
+
+// GEN+ v2.0 — count-up for clean integer metrics (reduced-motion safe)
+function initCountUp() {
+  const els = qsa("[data-countup]");
+  if (!els.length) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) {
+    els.forEach((el) => {
+      el.textContent = el.dataset.countup;
+    });
+    return;
+  }
+  const animate = (el) => {
+    const target = parseInt(el.dataset.countup, 10);
+    if (!Number.isFinite(target)) {
+      el.textContent = el.dataset.countup;
+      return;
+    }
+    const duration = 900;
+    let start = null;
+    el.textContent = "0";
+    const step = (ts) => {
+      if (start === null) start = ts;
+      const progress = Math.min(1, (ts - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = String(Math.round(target * eased));
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = String(target);
+    };
+    requestAnimationFrame(step);
+  };
+  const io = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.4 }
   );
-  qs("#commandCount").textContent = `${results.length} acciones disponibles`;
-  qs("#commandResults").innerHTML = results.length
-    ? results
-        .map(
-          (command, index) => `
-          <li>
-            <button type="button" data-command-result="${index}">
-              <strong>${command.label}</strong>
-              <span>${command.hint}</span>
-            </button>
-          </li>`
-        )
-        .join("")
-    : `<li class="command-empty">No hay resultados. Prueba con RFI, retraso, pago o agente.</li>`;
+  els.forEach((el) => io.observe(el));
+}
+
+// GEN+ v2.0 — scrollspy: highlight the section in view on the nav pills
+function initScrollSpy() {
+  const links = qsa(".nav-pills a");
+  if (!links.length || !("IntersectionObserver" in window)) return;
+  const map = new Map();
+  links.forEach((link) => {
+    const id = link.getAttribute("href").slice(1);
+    const section = document.getElementById(id);
+    if (section) map.set(section, link);
+  });
+  if (!map.size) return;
+  let current = null;
+  const setActive = (link) => {
+    if (link === current) return;
+    links.forEach((item) => {
+      item.classList.remove("is-active");
+      item.removeAttribute("aria-current");
+    });
+    if (link) {
+      link.classList.add("is-active");
+      link.setAttribute("aria-current", "true");
+    }
+    current = link;
+  };
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(map.get(entry.target));
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+  );
+  map.forEach((_, section) => io.observe(section));
+}
+
+// GEN+ v2.0 — live cut date + countdown to precongreso / congreso
+function renderCountdownAndDate() {
+  const months = [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+  ];
+  const now = new Date();
+
+  const cut = qs("#cutDate");
+  if (cut) {
+    const prefix = cut.dataset.cutPrefix || "Corte";
+    cut.textContent = `${prefix} - ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+  }
+
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const targets = {
+    congreso: new Date(2026, 6, 17),    // 17 jul 2026
+    precongreso: new Date(2026, 6, 8)   // 8 jul 2026
+  };
+  qsa("[data-countdown]").forEach((el) => {
+    const target = targets[el.dataset.countdown];
+    if (!target) return;
+    const days = Math.round((target - today) / 86400000);
+    const block = el.closest(".countdown-block");
+    if (days > 0) {
+      el.textContent = String(days);
+      if (block) block.classList.toggle("is-soon", days <= 7);
+    } else if (days === 0) {
+      el.textContent = "HOY";
+      if (block) block.classList.add("is-now");
+    } else {
+      el.textContent = "OK";
+      if (block) block.classList.add("is-now");
+    }
+  });
 }
 
 function bindInteractions() {
@@ -1443,25 +1649,99 @@ function bindInteractions() {
 
   qs("[data-action='print']").addEventListener("click", () => window.print());
 
+  // ---- command palette: navigation + IA actions, keyboard-first --------
   const commandDialog = qs("#commandDialog");
   const commandInput = qs("#commandInput");
+  const commandResults = qs("#commandResults");
+
   const openCommand = () => {
-    renderCommandResults("");
-    commandDialog.showModal();
+    commandInput.value = "";
+    renderCommand("");
+    if (!commandDialog.open) commandDialog.showModal();
     commandInput.focus();
   };
-  const closeCommand = () => commandDialog.close();
+  const closeCommand = () => {
+    if (commandDialog.open) commandDialog.close();
+  };
 
-  qsa("[data-command-open]").forEach((button) => button.addEventListener("mousedown", openCommand));
+  const setCmdActive = (next) => {
+    if (!palette.current.length) {
+      commandInput.removeAttribute("aria-activedescendant");
+      return;
+    }
+    palette.active = (next + palette.current.length) % palette.current.length;
+    qsa("[data-cmd-index]", commandResults).forEach((button) => {
+      const isActive = Number(button.dataset.cmdIndex) === palette.active;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+      if (isActive) button.scrollIntoView({ block: "nearest" });
+    });
+    commandInput.setAttribute("aria-activedescendant", `cmd-opt-${palette.active}`);
+  };
+
+  const executeCommand = (command, button) => {
+    if (!command) return;
+    if (command.type === "nav") {
+      closeCommand();
+      const target = document.querySelector(command.target);
+      if (target) {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+        history.replaceState(null, "", command.target);
+      }
+      showToast({ kind: "nav", title: "Navegando", msg: command.label });
+    } else {
+      if (button) {
+        button.dataset.executed = "true";
+        const hint = button.querySelector(".cmd-text span");
+        if (hint) hint.textContent = "Ejecutado en modo demo";
+      }
+      showToast({ kind: "action", title: "Ejecutado en modo demo", msg: command.label });
+      window.setTimeout(closeCommand, 520);
+    }
+  };
+
+  qsa("[data-command-open]").forEach((button) =>
+    button.addEventListener("mousedown", (event) => {
+      event.preventDefault();
+      openCommand();
+    })
+  );
   qs("[data-command-close]").addEventListener("click", closeCommand);
-  commandInput.addEventListener("input", (event) => renderCommandResults(event.target.value));
-  qs("#commandResults").addEventListener("click", (event) => {
-    const button = event.target.closest("button");
+  commandInput.addEventListener("input", (event) => renderCommand(event.target.value));
+
+  commandResults.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-cmd-index]");
     if (!button) return;
-    button.dataset.executed = "true";
-    button.querySelector("span").textContent = "Ejecutado en modo demo";
-    window.setTimeout(closeCommand, 280);
+    executeCommand(palette.current[Number(button.dataset.cmdIndex)], button);
   });
+  commandResults.addEventListener("mousemove", (event) => {
+    const button = event.target.closest("[data-cmd-index]");
+    if (button) setCmdActive(Number(button.dataset.cmdIndex));
+  });
+
+  commandInput.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setCmdActive(palette.active + 1);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setCmdActive(palette.active - 1);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      setCmdActive(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      setCmdActive(palette.current.length - 1);
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      executeCommand(
+        palette.current[palette.active],
+        qs(`[data-cmd-index="${palette.active}"]`, commandResults)
+      );
+    }
+  });
+
   document.addEventListener("keydown", (event) => {
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
       event.preventDefault();
@@ -1470,6 +1750,44 @@ function bindInteractions() {
     }
     if (event.key === "Escape" && commandDialog.open) closeCommand();
   });
+
+  // ---- executable feel: wire previously-static cards to feedback -------
+  const decisionList = qs("#decisionList");
+  if (decisionList) {
+    decisionList.addEventListener("click", (event) => {
+      const button = event.target.closest("button");
+      if (!button || button.disabled) return;
+      const card = button.closest(".decision-action");
+      const title = card?.querySelector("strong")?.textContent ?? "Accion";
+      button.classList.add("is-done");
+      button.textContent = "Hecho";
+      button.disabled = true;
+      showToast({ kind: "action", title: "Accion simulada", msg: title });
+    });
+  }
+
+  const projectStack = qs("#genProjectStack");
+  if (projectStack) {
+    projectStack.addEventListener("click", (event) => {
+      const card = event.target.closest(".gen-project-card");
+      if (!card) return;
+      qsa(".gen-project-card", projectStack).forEach((item) => item.classList.remove("is-selected"));
+      card.classList.add("is-selected");
+      const name = card.querySelector("strong")?.textContent ?? "Proyecto";
+      showToast({ kind: "nav", title: "Proyecto enfocado", msg: name });
+    });
+  }
+
+  const riskHeatmap = qs("#riskHeatmap");
+  if (riskHeatmap) {
+    riskHeatmap.addEventListener("click", (event) => {
+      const cell = event.target.closest(".heat-cell");
+      if (!cell) return;
+      const label = cell.querySelector("span")?.textContent ?? "Riesgo";
+      const value = cell.querySelector("strong")?.textContent ?? "";
+      showToast({ kind: "action", title: `${label}: ${value}`, msg: "Filtro de riesgo aplicado (demo)." });
+    });
+  }
 
   const modeToggle = qs("[data-mode-toggle]");
   modeToggle.addEventListener("click", () => {
@@ -1485,6 +1803,7 @@ function bindInteractions() {
 }
 
 function init() {
+  renderCountdownAndDate();
   renderGenPlusCommandCenter();
   renderKpis();
   renderEventInfo();
@@ -1499,6 +1818,8 @@ function init() {
   renderRisks();
   renderPostEvent();
   bindInteractions();
+  initScrollSpy();
+  initCountUp();
 }
 
 document.addEventListener("DOMContentLoaded", init);

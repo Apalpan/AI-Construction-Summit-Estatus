@@ -713,7 +713,8 @@ main { display: block; }
   border: 1px solid var(--primary-200);
   border-radius: var(--r-xs);
   cursor: pointer;
-  transition: transform var(--dur-2) var(--ease), background var(--dur-2) var(--ease);
+  transition: transform var(--dur-2) var(--ease), background var(--dur-2) var(--ease),
+    border-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
 }
 .decision-action button:hover { transform: var(--lift); background: var(--primary-tint-2); }
 .decision-action button:active { transform: translateY(0) scale(0.98); }
@@ -1370,7 +1371,7 @@ main { display: block; }
 .command-results strong { font-size: var(--fs-14); font-weight: var(--fw-bold); }
 .command-results span { font-size: var(--fs-12); color: var(--text-3); }
 .command-results li button[data-executed="true"] { background: var(--aec-success-tint); border-color: rgb(34 197 94 / 0.3); }
-.command-results li button[data-executed="true"] span { color: var(--aec-success); font-weight: var(--fw-bold); }
+.command-results li button[data-executed="true"] .cmd-text span { color: var(--aec-success); font-weight: var(--fw-bold); }
 .command-empty { padding: var(--sp-6); text-align: center; font-size: var(--fs-13); color: var(--text-3); }
 
 /* ============================================================ skeleton ==== */
@@ -1445,3 +1446,222 @@ main { display: block; }
 .cmd-surface .gen-mode-card { background: rgb(255 255 255 / 0.05); }
 .cmd-surface .agent-card span { color: #9FB2CC; }
 .cmd-surface .component-registry span { background: rgb(255 255 255 / 0.06); }
+.cmd-surface .decision-action button.is-done {
+  background: rgb(34 197 94 / 0.18);
+  border-color: rgb(34 197 94 / 0.45);
+  color: var(--aec-success-soft);
+}
+
+/* ============================================================================
+   GEN+ v2.0 — AI-native upgrades (additive, token-driven, zero regression)
+   scroll progress · global ⌘K · live countdown · scrollspy · toasts
+   ============================================================================ */
+
+/* ---- topbar actions group + global command trigger -------------------- */
+.topbar-actions { display: inline-flex; align-items: center; gap: var(--sp-2); }
+
+.topbar-cmd {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease),
+    background var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
+}
+.topbar-cmd svg { color: var(--text-3); flex: none; transition: color var(--dur-2) var(--ease); }
+.topbar-cmd:hover { color: var(--text); border-color: var(--border-strong); background: var(--surface); }
+.topbar-cmd:hover svg { color: var(--primary); }
+.topbar-cmd kbd {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  color: var(--text-2);
+  padding: 2px 6px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xs);
+}
+
+/* ---- scroll progress (compositor-driven via scroll-timeline) ---------- */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: calc(var(--z-header) + 5);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--primary), var(--aec-progress-bright));
+  box-shadow: 0 1px 10px -1px var(--primary-glow);
+  pointer-events: none;
+  will-change: transform;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: scroll-progress-grow linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@keyframes scroll-progress-grow { to { transform: scaleX(1); } }
+
+/* ---- hero live countdown --------------------------------------------- */
+.hero-countdown { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+.countdown-block {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid rgb(148 163 184 / 0.14);
+}
+.countdown-block strong {
+  font-size: var(--fs-32);
+  font-weight: var(--fw-black);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+.countdown-block span { font-size: var(--fs-12); color: #93A7C7; line-height: 1.25; }
+.countdown-block em { font-style: normal; font-weight: var(--fw-bold); color: #7FA8FF; }
+.countdown-block.is-soon strong { color: var(--aec-warning-bright); }
+.countdown-block.is-now strong { color: var(--aec-success-bright); }
+
+/* ---- scrollspy active nav -------------------------------------------- */
+.nav-pills a.is-active { color: var(--primary); background: var(--primary-tint); }
+
+/* ---- command palette: groups, keyboard active, icons, footer --------- */
+.command-group-label {
+  font-size: var(--fs-12);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-3);
+  padding: var(--sp-3) var(--sp-2) var(--sp-1);
+}
+.command-results li button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.command-results li button.is-active {
+  background: var(--primary-tint);
+  border-color: var(--primary-200);
+  box-shadow: var(--ring);
+}
+.cmd-ico {
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border-radius: var(--r-xs);
+  background: var(--surface-3);
+  color: var(--text-2);
+  flex: none;
+}
+.cmd-ico.nav { color: var(--primary); background: var(--primary-tint); }
+.cmd-ico.action { color: var(--aec-progress); background: var(--aec-progress-tint); }
+.cmd-text { display: grid; gap: 2px; min-width: 0; }
+.cmd-text strong { font-size: var(--fs-14); font-weight: var(--fw-bold); }
+.cmd-text span { font-size: var(--fs-12); color: var(--text-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cmd-kind {
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  font-family: var(--font-mono);
+  color: var(--text-2);
+  padding: 2px 7px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xs);
+  flex: none;
+}
+.command-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  padding-top: var(--sp-3);
+  margin-top: var(--sp-1);
+  border-top: 1px solid var(--border);
+}
+.command-foot span { display: inline-flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-12); color: var(--text-3); }
+.command-foot kbd {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  color: var(--text-2);
+  min-width: 18px;
+  text-align: center;
+  padding: 1px 5px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* ---- toast stack ----------------------------------------------------- */
+.toast-stack {
+  position: fixed;
+  right: clamp(12px, 3vw, 28px);
+  bottom: clamp(12px, 3vw, 28px);
+  z-index: var(--z-dialog);
+  display: grid;
+  gap: var(--sp-2);
+  width: min(360px, calc(100vw - 24px));
+  pointer-events: none;
+}
+.toast {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2px var(--sp-3);
+  align-items: center;
+  padding: var(--sp-3) var(--sp-4);
+  background: rgb(255 255 255 / 0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--aec-success-bright);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-pop);
+  pointer-events: auto;
+  animation: toast-in var(--dur-3) var(--ease) both;
+}
+.toast.nav { border-left-color: var(--primary); }
+.toast .toast-ico {
+  grid-row: 1 / 3;
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--aec-success-tint);
+  color: var(--aec-success);
+}
+.toast.nav .toast-ico { background: var(--primary-tint); color: var(--primary); }
+.toast strong { font-size: var(--fs-13); font-weight: var(--fw-bold); color: var(--text); }
+.toast > span { font-size: var(--fs-12); color: var(--text-2); overflow: hidden; text-overflow: ellipsis; }
+.toast.is-leaving { animation: toast-out var(--dur-2) var(--ease) both; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } }
+@keyframes toast-out { to { opacity: 0; transform: translateX(16px); } }
+
+/* ---- responsive + print for v2.0 elements ---------------------------- */
+@media (max-width: 720px) {
+  .topbar-cmd span { display: none; }
+  .topbar-cmd { padding: var(--sp-2); min-width: 44px; min-height: 44px; justify-content: center; }
+}
+@media (max-width: 560px) {
+  .print-button { display: none; }
+  .topbar-cmd kbd { display: none; }
+}
+@media (max-width: 400px) {
+  .hero-countdown { grid-template-columns: 1fr; }
+}
+@media print {
+  .scroll-progress, .toast-stack { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; }
+  .scroll-progress { display: none; }
+}

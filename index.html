@@ -7,7 +7,31 @@
       name="description"
       content="Informe ejecutivo y dashboard operativo del AI Construction Summit 2026 por areas, responsables, riesgos y siguientes acciones."
     />
+    <meta name="theme-color" content="#040F20" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#2165FF" media="(prefers-color-scheme: light)" />
+    <link rel="canonical" href="https://apalpan.github.io/AI-Construction-Summit-Estatus/" />
     <title>AI Construction Summit 2026 | Estatus Integral</title>
+
+    <!-- GEN+ v2.0 · social / sharing (B2B WhatsApp + LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AECODE · GEN+" />
+    <meta property="og:title" content="AI Construction Summit 2026 · Estatus Integral" />
+    <meta
+      property="og:description"
+      content="Puente de mando del Summit: areas, owners, riesgos, stands, Go/No-Go y GEN+ AI Command Center."
+    />
+    <meta property="og:url" content="https://apalpan.github.io/AI-Construction-Summit-Estatus/" />
+    <meta
+      property="og:image"
+      content="https://apalpan.github.io/AI-Construction-Summit-Estatus/assets/aecode-logo-principal-fondo-oscuro.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Construction Summit 2026 · Estatus Integral" />
+    <meta
+      name="twitter:description"
+      content="Dashboard ejecutivo AI-native del Summit AEC 2026: decisiones, riesgos y agentes IA."
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,6 +43,9 @@
     <link rel="icon" href="./assets/aecode-logo-principal-fondo-blanco.png" />
   </head>
   <body>
+    <!-- GEN+ v2.0 · scroll progress (compositor-driven, scroll-timeline) -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
     <div class="site-shell">
       <header class="topbar" aria-label="Navegacion principal">
         <a class="brand" href="#inicio" aria-label="Ir al inicio">
@@ -39,13 +66,23 @@
           <a href="#stands">Stands</a>
           <a href="#riesgos">Riesgos</a>
         </nav>
-        <button class="print-button" type="button" data-action="print">Exportar PDF</button>
+        <div class="topbar-actions">
+          <button class="topbar-cmd" type="button" data-command-open aria-haspopup="dialog" aria-label="Abrir buscador de acciones y secciones">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <span>Buscar</span>
+            <kbd>Ctrl K</kbd>
+          </button>
+          <button class="print-button" type="button" data-action="print">Exportar PDF</button>
+        </div>
       </header>
 
       <main>
         <section class="hero deck-slide" id="inicio">
           <div class="hero-content">
-            <div class="eyebrow">Corte operativo consolidado - 29 junio 2026</div>
+            <div class="eyebrow" id="cutDate" data-cut-prefix="Corte operativo consolidado">Corte operativo consolidado - 29 junio 2026</div>
             <h1>Informe completo por areas para cierre del AI Construction Summit 2026</h1>
             <p>
               Vista ejecutiva, tablero de control, checklist por etapa, mapa de stands,
@@ -59,21 +96,32 @@
           <aside class="hero-panel" aria-label="Resumen ejecutivo">
             <div class="panel-kicker">Estado ejecutivo</div>
             <div class="status-chip status-critical">Sprint critico</div>
+            <!-- GEN+ v2.0 · countdown en vivo al Summit -->
+            <div class="hero-countdown" id="heroCountdown" aria-live="polite">
+              <div class="countdown-block">
+                <strong data-countdown="congreso">--</strong>
+                <span>dias al Congreso<br /><em>17-18 jul</em></span>
+              </div>
+              <div class="countdown-block">
+                <strong data-countdown="precongreso">--</strong>
+                <span>dias al Precongreso<br /><em>8-9 jul</em></span>
+              </div>
+            </div>
             <dl class="hero-metrics">
               <div>
-                <dt>17</dt>
+                <dt data-countup="17">17</dt>
                 <dd>frentes operativos</dd>
               </div>
               <div>
-                <dt>10</dt>
+                <dt data-countup="10">10</dt>
                 <dd>hitos Go / No-Go</dd>
               </div>
               <div>
-                <dt>31</dt>
+                <dt data-countup="31">31</dt>
                 <dd>stands numerados</dd>
               </div>
               <div>
-                <dt>21</dt>
+                <dt data-countup="21">21</dt>
                 <dd>campos abiertos</dd>
               </div>
             </dl>
@@ -458,13 +506,21 @@
           <button type="button" aria-label="Cerrar command menu" data-command-close>Esc</button>
         </header>
         <label class="command-input">
-          <span>Buscar accion</span>
-          <input id="commandInput" type="search" placeholder="Predecir retraso, aprobar pago, asignar agente..." autocomplete="off" />
+          <span>Buscar accion o seccion</span>
+          <input id="commandInput" type="search" placeholder="Ir a riesgos, predecir retraso, aprobar pago, asignar agente..." autocomplete="off" role="combobox" aria-expanded="true" aria-controls="commandResults" aria-autocomplete="list" />
         </label>
         <p class="command-count" aria-live="polite" id="commandCount"></p>
-        <ul class="command-results" id="commandResults"></ul>
+        <ul class="command-results" id="commandResults" role="listbox" aria-label="Resultados"></ul>
+        <footer class="command-foot">
+          <span><kbd>&#8593;</kbd><kbd>&#8595;</kbd> navegar</span>
+          <span><kbd>&#8629;</kbd> ejecutar</span>
+          <span><kbd>esc</kbd> cerrar</span>
+        </footer>
       </form>
     </dialog>
+
+    <!-- GEN+ v2.0 · toast stack para acciones simuladas -->
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
 
     <script src="./app.js" defer></script>
   </body>
